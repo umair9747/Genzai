@@ -1,0 +1,15 @@
+{
+    "entries": {
+      "TP-Link Router": {
+        "matchers": {
+          "headers": {
+            "Server": "Router Webserver",
+            "WWW-Authenticate": "Basic realm=\"TP-Link"
+          },
+          "strings": ["TP-LINK Technologies Co., Ltd. All rights reserved."],
+          "response_code": 200
+        }
+      }
+    }
+  }
+  
