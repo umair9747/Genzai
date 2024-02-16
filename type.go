@@ -27,6 +27,7 @@ type CustomPayload struct {
 
 type CustomMatchers struct {
 	ResponseCode int           `json:"response_code"`
+	Responsepath string        `json:"responsePath"`
 	Strings      []string      `json:"strings"`
 	Headers      CustomHeaders `json:"headers"`
 }

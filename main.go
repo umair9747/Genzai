@@ -17,13 +17,24 @@ func main() {
 		fmt.Println("\n ")
 	}
 
+	genzaiOutput.Targets = targets
+
 	for _, target := range targets {
+		fmt.Println()
 		log.Println("Starting the scan for", target)
 		product := targetDetection(target)
 		if product != "" {
+			var targetResult genzaiResult
+			targetResult.Target = target
+			targetResult.IoTidentified = product
 			log.Println("IoT Dashboard Discovered:", product)
 			log.Println("Trying for default vendor-specific [", product, "] passwords...")
-			vendorpassScan(target, product)
+			passIssue := vendorpassScan(target, product)
+			if passIssue.URL != "" {
+				targetResult.Issues = append(targetResult.Issues, passIssue)
+			}
+
+			genzaiOutput.Results = append(genzaiOutput.Results, targetResult)
 		}
 	}
 
@@ -40,4 +51,5 @@ func main() {
 			fmt.Println()
 		}
 	*/
+	generateOutput()
 }

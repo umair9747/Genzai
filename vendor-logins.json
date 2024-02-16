@@ -15,6 +15,7 @@
         },
         "matchers": {
             "response_code": 200,
+            "responsePath": "/userRpm/Index.htm",
             "strings": ["/userRpm/Index.htm"]
         },
         "issue": "TP-Link Router Default Password - admin:admin"
@@ -35,7 +36,8 @@
         },
         "matchers": {
             "response_code": 200,
-            "strings": ["/userRpm/Index.htm"],
+            "responsePath": "/userRpm/Index.htm",
+            "strings": ["\/userRpm\/Index.htm"],
             "headers": {
                 "Server": "Router Webserver",
                 "WWW-Authenticate": "Basic realm=\"TP-Link"

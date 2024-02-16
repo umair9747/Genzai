@@ -17,21 +17,20 @@ func takeInput() {
 		os.Exit(0)
 	} else {
 		for _, arg := range args {
-			if !strings.Contains(arg, ".") {
-
-			}
-			if strings.HasSuffix(arg, ".txt") {
-				content, err := ioutil.ReadFile(arg)
-				if err != nil {
-					fmt.Println("Error reading file:", err)
-					os.Exit(0)
+			if strings.Contains(arg, ".") {
+				if strings.HasSuffix(arg, ".txt") {
+					content, err := ioutil.ReadFile(arg)
+					if err != nil {
+						fmt.Println("Error reading file:", err)
+						os.Exit(0)
+					}
+					targets = append(targets, strings.Split(string(content), "\n")...)
 				}
-				targets = append(targets, strings.Split(string(content), "\n")...)
-			}
-			if !strings.HasPrefix(arg, "http") {
-				targets = append(targets, "http://"+arg)
-			} else {
-				targets = append(targets, arg)
+				if !strings.HasPrefix(arg, "http") {
+					targets = append(targets, "http://"+arg)
+				} else {
+					targets = append(targets, arg)
+				}
 			}
 		}
 	}
