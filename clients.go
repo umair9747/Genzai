@@ -7,7 +7,7 @@ import (
 
 func makeHTTPRequestGET(url string, headers map[string]string) (*http.Response, error) {
 	client := http.Client{
-		Timeout: 30 * time.Second,
+		Timeout: 60 * time.Second,
 	}
 
 	var req *http.Request

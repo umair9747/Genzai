@@ -9,6 +9,15 @@
           "strings": ["TP-LINK Technologies Co., Ltd. All rights reserved."],
           "response_code": 200
         }
+      },
+      "Edimax Router": {
+        "matchers": {
+          "headers": {
+            "Www-Authenticate": "Basic realm=\"Default Name:admin Password:1234\""
+          },
+          "strings": [],
+          "response_code": 200
+        }
       }
     }
   }
