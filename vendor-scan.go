@@ -1,13 +1,14 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
+	"regexp"
 	"strings"
 )
 
-func vendorpassScan(target string, product string) {
+func vendorpassScan(target string, product string) Issue {
+	var vendorpassIssue Issue
 	if !strings.HasSuffix(target, "/") {
 		target += "/"
 	}
@@ -19,6 +20,7 @@ func vendorpassScan(target string, product string) {
 					resp, err := makeHTTPRequestGET(target+payloadPath, entry.Payload.Headers)
 					if err != nil { // IF THERE WAS AN ERROR MAKING THE REQ
 						log.Println(err)
+						return vendorpassIssue
 					} else { // IF THERE WERE NO ERRORS
 
 						//DO THE MATCHING OVER HERE
@@ -26,17 +28,37 @@ func vendorpassScan(target string, product string) {
 						// FIRST DO NON-200 STATUS CODE MATCHES HERE
 						if entry.Matchers.ResponseCode != 200 {
 							if resp.StatusCode == entry.Matchers.ResponseCode {
-								log.Fatalln("Discovered", entry.Issue)
+								log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
+								vendorpassIssue.IssueTitle = entry.Issue
+								vendorpassIssue.URL = target + payloadPath
+								vendorpassIssue.AdditionalContext = "The resulting non-200 status code matched with the one in DB."
+								return vendorpassIssue
 							}
 						}
 
-						// SECONDLY CHECK OVER THE RESPONSE HEADERS
+						// SECONDLY CHECK FOR THE RESPONSE PATH
+
+						if entry.Matchers.Responsepath != "" {
+							if strings.Contains(resp.Request.URL.Path, entry.Matchers.Responsepath) {
+								log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
+								vendorpassIssue.IssueTitle = entry.Issue
+								vendorpassIssue.URL = target + payloadPath
+								vendorpassIssue.AdditionalContext = "The resulting URL path matched with the one in DB."
+								return vendorpassIssue
+							}
+						}
+
+						// THIRDLY CHECK OVER THE RESPONSE HEADERS
 						if entry.Matchers.Headers != nil {
 							for headerKey, headerValue := range entry.Matchers.Headers {
 								for key, values := range resp.Header {
 									for _, value := range values {
 										if headerKey == key && strings.Contains(value, headerValue) {
-											log.Fatalln("Discovered", entry.Issue)
+											log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
+											vendorpassIssue.IssueTitle = entry.Issue
+											vendorpassIssue.URL = target + payloadPath
+											vendorpassIssue.AdditionalContext = "The resulting headers matched with those in the DB."
+											return vendorpassIssue
 										}
 									}
 								}
@@ -47,8 +69,13 @@ func vendorpassScan(target string, product string) {
 						// NEXT CHECK FOR STRINGS WITHIN RESPONSE BODY
 						if entry.Matchers.Strings != nil {
 							for _, matchString := range entry.Matchers.Strings {
-								if strings.Contains(string(respBody), matchString) {
-									log.Fatalln(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
+								matchRe := regexp.MustCompile(matchString)
+								if matchRe.MatchString(string(respBody)) {
+									log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
+									vendorpassIssue.IssueTitle = entry.Issue
+									vendorpassIssue.URL = target + payloadPath
+									vendorpassIssue.AdditionalContext = "The resulting body had matching strings from the DB."
+									return vendorpassIssue
 								}
 							}
 						}
@@ -71,8 +98,8 @@ func vendorpassScan(target string, product string) {
 						fmt.Printf("    %s: %s\n", key, value)
 					}
 				*/
-				fmt.Println()
 			}
 		}
 	}
+	return vendorpassIssue
 }
