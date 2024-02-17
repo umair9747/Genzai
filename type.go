@@ -7,10 +7,13 @@ type Match struct {
 	Headers      map[string]interface{} `json:"headers"`
 	Strings      []string               `json:"strings"`
 	ResponseCode int                    `json:"response_code"`
+	Condition    string                 `json:"condition"`
 }
 
 type Entry struct {
-	Matchers Match `json:"matchers"`
+	Matchers Match  `json:"matchers"`
+	Category string `json:"category"`
+	Tag      string `json:"tag"`
 }
 
 type DynamicEntries map[string]Entry
@@ -33,6 +36,7 @@ type CustomMatchers struct {
 }
 
 type CustomEntry struct {
+	Tag      string         `json:"tag"`
 	Payload  CustomPayload  `json:"payload"`
 	Matchers CustomMatchers `json:"matchers"`
 	Issue    string         `json:"issue"`

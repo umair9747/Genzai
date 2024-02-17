@@ -7,13 +7,13 @@ import (
 	"strings"
 )
 
-func vendorpassScan(target string, product string) Issue {
+func vendorpassScan(target string, product string, tag string) Issue {
 	var vendorpassIssue Issue
 	if !strings.HasSuffix(target, "/") {
 		target += "/"
 	}
-	for vendor, entry := range vendorDB.Entries {
-		if vendor == product { // LOOK FOR THE EXACT VENDOR PASS ENTRY WE WANNA TRY
+	for _, entry := range vendorDB.Entries {
+		if entry.Tag == tag { // LOOK FOR THE EXACT VENDOR PASS ENTRY WE WANNA TRY
 			for _, payloadPath := range entry.Payload.Paths {
 
 				if entry.Payload.Method == "GET" { // CHECK THE PAYLOAD METHOD - IF ITS GET
@@ -53,7 +53,7 @@ func vendorpassScan(target string, product string) Issue {
 							for headerKey, headerValue := range entry.Matchers.Headers {
 								for key, values := range resp.Header {
 									for _, value := range values {
-										if headerKey == key && strings.Contains(value, headerValue) {
+										if strings.ToLower(headerKey) == strings.ToLower(key) && strings.Contains(strings.ToLower(value), strings.ToLower(headerValue)) {
 											log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
 											vendorpassIssue.IssueTitle = entry.Issue
 											vendorpassIssue.URL = target + payloadPath
@@ -69,8 +69,8 @@ func vendorpassScan(target string, product string) Issue {
 						// NEXT CHECK FOR STRINGS WITHIN RESPONSE BODY
 						if entry.Matchers.Strings != nil {
 							for _, matchString := range entry.Matchers.Strings {
-								matchRe := regexp.MustCompile(matchString)
-								if matchRe.MatchString(string(respBody)) {
+								matchRe := regexp.MustCompile(strings.ToLower(matchString))
+								if matchRe.MatchString(strings.ToLower(string(respBody))) {
 									log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
 									vendorpassIssue.IssueTitle = entry.Issue
 									vendorpassIssue.URL = target + payloadPath

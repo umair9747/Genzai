@@ -13,7 +13,7 @@ func printBanner() {
 }
 
 func loadDB() {
-	fileContent, err := ioutil.ReadFile("signatures.json")
+	fileContent, err := os.ReadFile("signatures.json")
 	if err != nil {
 		log.Println("error reading file: ", err)
 		os.Exit(0)

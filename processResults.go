@@ -17,6 +17,7 @@ type Issue struct {
 type genzaiResult struct {
 	Target        string  `json:"Target"`
 	IoTidentified string  `json:"IoTidentified"`
+	Category      string  `json:"category"`
 	Issues        []Issue `json:"Issues"`
 }
 

@@ -1,24 +1,52 @@
 {
     "entries": {
-      "TP-Link Router": {
+      "Tenda Wireless Router": {
+        "matchers": {
+          "strings": [".\/css\/reasyui.css"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "Tenda"
+      },
+      "TP-Link Wireless Router": {
         "matchers": {
           "headers": {
             "Server": "Router Webserver",
-            "WWW-Authenticate": "Basic realm=\"TP-Link"
+            "Www-Authenticate": "Basic realm=\"TP-Link"
           },
           "strings": ["TP-LINK Technologies Co., Ltd. All rights reserved."],
-          "response_code": 200
-        }
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "TP-Link"
       },
-      "Edimax Router": {
+      "Edimax Wireless Router": {
         "matchers": {
           "headers": {
             "Www-Authenticate": "Basic realm=\"Default Name:admin Password:1234\""
           },
           "strings": [],
-          "response_code": 200
-        }
-      }
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "Edimax"
+      },
+      "IP Camera": {
+        "matchers": {
+          "headers": {
+            "Cache-Control": "no-cache,no-store",
+            "Www-Authenticate": "Basic realm=\"index.html\""
+          },
+          "strings": ["Error: username or password error,please input again."],
+          "response_code": 401,
+          "condition": "AND"
+        },
+        "category": "Camera",
+        "tag": "IPCamera"
+      }  
     }
   }
   

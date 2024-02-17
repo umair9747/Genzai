@@ -1,6 +1,7 @@
 {
     "entries": {
       "TP-Link Router": {
+        "tag": "TP-Link",
         "payload": {
           "paths": ["userRpm/LoginRpm.htm?Save=Save"],
           "headers": {
@@ -21,6 +22,7 @@
         "issue": "TP-Link Router Default Password - admin:admin"
       },
       "Edimax Router": {
+        "tag": "Edimax",
         "payload": {
           "paths": ["information.asp"],
           "headers": {
@@ -39,6 +41,30 @@
             "strings": ["ActDHCPClient_fieldset", "showWirelessClient"]
         },
         "issue": "Edimax Router Default Password - admin:1234"
+      },
+      "IP Camera": {
+        "tag": "IPCamera",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Authorization": "Basic YWRtaW46YWRtaW4="
+        },        
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["cmd=getlanguage", "/web/ClientPlus_Setup.exe"],
+            "headers": {
+              "Server": "Hipcam"
+          }
+        },
+        "issue": "IP Camera Default Password - admin:admin"
       }
     },
     "DUMMY": {
