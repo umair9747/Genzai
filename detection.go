@@ -79,6 +79,10 @@ func makeGetRequest(url string) (*http.Response, error) {
 
 func andConditionMatcher(entry Entry, resp *http.Response, respBody []byte) bool {
 	var isMatched bool
+	var headersMatched bool
+	var stringsMatched bool
+	var statusMatched bool
+
 	if entry.Matchers.Headers != nil {
 		var headerScore int
 		for headerKey, headerValue := range entry.Matchers.Headers {
@@ -91,9 +95,12 @@ func andConditionMatcher(entry Entry, resp *http.Response, respBody []byte) bool
 			}
 		}
 		if headerScore == len(entry.Matchers.Headers) {
-			isMatched = true
+			headersMatched = true
 		}
+	} else {
+		headersMatched = true
 	}
+
 	// MATCH AGAINST STRINGS
 
 	if len(entry.Matchers.Strings) > 0 {
@@ -105,20 +112,24 @@ func andConditionMatcher(entry Entry, resp *http.Response, respBody []byte) bool
 		}
 
 		if stringScore == len(entry.Matchers.Strings) {
-			isMatched = true
-		} else {
-			isMatched = false
+			stringsMatched = true
 		}
+	} else {
+		stringsMatched = true
 	}
 
 	// MATCH AGAINST NON-200 CODES
 
 	if entry.Matchers.ResponseCode != 200 {
 		if entry.Matchers.ResponseCode == resp.StatusCode {
-			isMatched = true
-		} else {
-			isMatched = false
+			statusMatched = true
 		}
+	} else {
+		statusMatched = true
+	}
+
+	if headersMatched && stringsMatched && statusMatched {
+		isMatched = true
 	}
 
 	return isMatched

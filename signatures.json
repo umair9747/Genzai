@@ -46,6 +46,18 @@
         },
         "category": "Camera",
         "tag": "IPCamera"
+      },
+      "Asus Wireless Router RT-N12E": {
+        "matchers": {
+          "headers": {
+            "Www-Authenticate": "Basic realm=\"RT-N12E\""
+          },
+          "strings": ["Authorization required."],
+          "response_code": 401,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "Asus"
       }  
     }
   }
