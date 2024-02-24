@@ -65,6 +65,27 @@
           }
         },
         "issue": "IP Camera Default Password - admin:admin"
+      },
+      "Asus Wireless Router RT-N12E": {
+        "tag": "Asus",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Authorization": "Basic YWRtaW46YWRtaW4="
+        },        
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["login_ip_str", "device-map", "set_default_choice"]
+        },
+        "issue": "Asus Wireless Router RT-N12E Default Password - admin:admin"
       }
     },
     "DUMMY": {
