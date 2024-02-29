@@ -101,7 +101,25 @@
         },
         "category": "Climate Control",
         "tag": "Heatmiser"
-      }         
+      },
+      "WAGO Ethernet Web-Based Management - 1": {
+        "matchers": {
+          "strings": ["<title> WAGO Ethernet Web-Based Management </title>", "cplcfg/upperframe.htm", "cplcfg/menuframe.ssi"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Industrial Automation",
+        "tag": "WAGO"
+      },
+      "WAGO Ethernet Web-Based Management - 2": {
+        "matchers": {
+          "strings": ["<title>WAGO Ethernet Web-based Management</title>", "<h1>Web-based Management</h1>", "Hansastr. 27"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Industrial Automation",
+        "tag": "WAGO"
+      }            
     }
   }
   
