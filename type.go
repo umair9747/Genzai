@@ -25,6 +25,7 @@ type CustomHeaders map[string]string
 type CustomPayload struct {
 	Paths   []string      `json:"paths"`
 	Headers CustomHeaders `json:"headers"`
+	Body    string        `json:"body"`
 	Method  string        `json:"method"`
 }
 

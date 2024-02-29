@@ -58,7 +58,50 @@
         },
         "category": "Router",
         "tag": "Asus"
-      }  
+      },
+      "Omron NS web interface": {
+        "matchers": {
+          "headers": {
+            "Server": "NS Web Interface Version",
+            "Www-Authenticate": "Basic Realm=\"NS Web Interface\""
+          },
+          "strings": ["401 Authorization Required"],
+          "response_code": 401,
+          "condition": "AND"
+        },
+        "category": "HMI",
+        "tag": "Omron"
+      },
+      "ANEL-Elektronik NET-PwrCtrl": {
+        "matchers": {
+          "headers": {
+            "Www-Authenticate": "Basic realm=\"NET-PwrCtrl\""
+          },
+          "strings": ["401 Unauthorized: Password required"],
+          "response_code": 401,
+          "condition": "AND"
+        },
+        "category": "Smart Power Control",
+        "tag": "ANEL-Elektronik"
+      },
+      "Comelit Multi-apartment Gateway": {
+        "matchers": {
+          "strings": ["- Index</title>", "comelit-logo.png", "by Comelit S.p.A. All rights reserved"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Building Access Control System",
+        "tag": "Comelit"
+      },
+      "Heatmiser Wifi Thermostat": {
+        "matchers": {
+          "strings": ["<title>Heatmiser Wifi Thermostat</title>", "Username", "Password"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Climate Control",
+        "tag": "Heatmiser"
+      }         
     }
   }
   

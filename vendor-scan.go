@@ -15,68 +15,64 @@ func vendorpassScan(target string, product string, tag string) Issue {
 	for _, entry := range vendorDB.Entries {
 		if entry.Tag == tag { // LOOK FOR THE EXACT VENDOR PASS ENTRY WE WANNA TRY
 			for _, payloadPath := range entry.Payload.Paths {
+				resp, err := makeHTTPRequest(target+payloadPath, entry.Payload.Headers, entry.Payload.Body, entry.Payload.Method)
+				if err != nil { // IF THERE WAS AN ERROR MAKING THE REQ
+					log.Println(err)
+					return vendorpassIssue
+				} else { // IF THERE WERE NO ERRORS
 
-				if entry.Payload.Method == "GET" { // CHECK THE PAYLOAD METHOD - IF ITS GET
-					resp, err := makeHTTPRequestGET(target+payloadPath, entry.Payload.Headers)
-					if err != nil { // IF THERE WAS AN ERROR MAKING THE REQ
-						log.Println(err)
-						return vendorpassIssue
-					} else { // IF THERE WERE NO ERRORS
-
-						//DO THE MATCHING OVER HERE
-
-						// FIRST DO NON-200 STATUS CODE MATCHES HERE
-						if entry.Matchers.ResponseCode != 200 {
-							if resp.StatusCode == entry.Matchers.ResponseCode {
-								log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
-								vendorpassIssue.IssueTitle = entry.Issue
-								vendorpassIssue.URL = target + payloadPath
-								vendorpassIssue.AdditionalContext = "The resulting non-200 status code matched with the one in DB."
-								return vendorpassIssue
-							}
+					//DO THE MATCHING OVER HERE
+					// FIRST DO NON-200 STATUS CODE MATCHES HERE
+					if entry.Matchers.ResponseCode != 200 {
+						if resp.StatusCode == entry.Matchers.ResponseCode {
+							log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
+							vendorpassIssue.IssueTitle = entry.Issue
+							vendorpassIssue.URL = target + payloadPath
+							vendorpassIssue.AdditionalContext = "The resulting non-200 status code matched with the one in DB."
+							return vendorpassIssue
 						}
+					}
 
-						// SECONDLY CHECK FOR THE RESPONSE PATH
+					// SECONDLY CHECK FOR THE RESPONSE PATH
 
-						if entry.Matchers.Responsepath != "" {
-							if strings.Contains(resp.Request.URL.Path, entry.Matchers.Responsepath) {
-								log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
-								vendorpassIssue.IssueTitle = entry.Issue
-								vendorpassIssue.URL = target + payloadPath
-								vendorpassIssue.AdditionalContext = "The resulting URL path matched with the one in DB."
-								return vendorpassIssue
-							}
+					if entry.Matchers.Responsepath != "" {
+						if strings.Contains(resp.Request.URL.Path, entry.Matchers.Responsepath) {
+							log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
+							vendorpassIssue.IssueTitle = entry.Issue
+							vendorpassIssue.URL = target + payloadPath
+							vendorpassIssue.AdditionalContext = "The resulting URL path matched with the one in DB."
+							return vendorpassIssue
 						}
+					}
 
-						// THIRDLY CHECK OVER THE RESPONSE HEADERS
-						if entry.Matchers.Headers != nil {
-							for headerKey, headerValue := range entry.Matchers.Headers {
-								for key, values := range resp.Header {
-									for _, value := range values {
-										if strings.ToLower(headerKey) == strings.ToLower(key) && strings.Contains(strings.ToLower(value), strings.ToLower(headerValue)) {
-											log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
-											vendorpassIssue.IssueTitle = entry.Issue
-											vendorpassIssue.URL = target + payloadPath
-											vendorpassIssue.AdditionalContext = "The resulting headers matched with those in the DB."
-											return vendorpassIssue
-										}
+					// THIRDLY CHECK OVER THE RESPONSE HEADERS
+					if entry.Matchers.Headers != nil {
+						for headerKey, headerValue := range entry.Matchers.Headers {
+							for key, values := range resp.Header {
+								for _, value := range values {
+									if strings.ToLower(headerKey) == strings.ToLower(key) && strings.Contains(strings.ToLower(value), strings.ToLower(headerValue)) {
+										log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
+										vendorpassIssue.IssueTitle = entry.Issue
+										vendorpassIssue.URL = target + payloadPath
+										vendorpassIssue.AdditionalContext = "The resulting headers matched with those in the DB."
+										return vendorpassIssue
 									}
 								}
 							}
 						}
+					}
 
-						respBody, _ := ioutil.ReadAll(resp.Body)
-						// NEXT CHECK FOR STRINGS WITHIN RESPONSE BODY
-						if entry.Matchers.Strings != nil {
-							for _, matchString := range entry.Matchers.Strings {
-								matchRe := regexp.MustCompile(strings.ToLower(matchString))
-								if matchRe.MatchString(strings.ToLower(string(respBody))) {
-									log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
-									vendorpassIssue.IssueTitle = entry.Issue
-									vendorpassIssue.URL = target + payloadPath
-									vendorpassIssue.AdditionalContext = "The resulting body had matching strings from the DB."
-									return vendorpassIssue
-								}
+					respBody, _ := ioutil.ReadAll(resp.Body)
+					// NEXT CHECK FOR STRINGS WITHIN RESPONSE BODY
+					if entry.Matchers.Strings != nil {
+						for _, matchString := range entry.Matchers.Strings {
+							matchRe := regexp.MustCompile(strings.ToLower(matchString))
+							if matchRe.MatchString(strings.ToLower(string(respBody))) {
+								log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
+								vendorpassIssue.IssueTitle = entry.Issue
+								vendorpassIssue.URL = target + payloadPath
+								vendorpassIssue.AdditionalContext = "The resulting body had matching strings from the DB."
+								return vendorpassIssue
 							}
 						}
 					}

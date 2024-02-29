@@ -86,6 +86,105 @@
             "strings": ["login_ip_str", "device-map", "set_default_choice"]
         },
         "issue": "Asus Wireless Router RT-N12E Default Password - admin:admin"
+      },
+      "Omron NS web interface": {
+        "tag": "Omron",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Authorization": "Basic ZGVmYXVsdDpkZWZhdWx0"
+        },        
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["NS Web Interface Menu", "Copyright OMRON Corporation"]
+        },
+        "issue": "Omron NS web interface Default Password - default:default"
+      },
+      "ANEL-Elektronik NET-PwrCtrl": {
+        "tag": "ANEL-Elektronik",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "identity",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Authorization": "Basic YWRtaW46YW5lbA=="
+        },        
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["ANEL-Elektronik NET-PwrCtrl", "Logout", "ctrl.htm"],
+            "headers": {
+              "Access-Control-Allow-Origin": "*",
+              "Cache-Control": "max-age=600"
+          }
+        },
+        "issue": "ANEL-Elektronik NET-PwrCtrl Default Password - admin:anel"
+      },
+      "Comelit Multi-apartment Gateway": {
+        "tag": "Comelit",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "l-pwd=admin",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Access granted as", "by Comelit S.p.A. All rights reserved."],
+            "headers": {
+              "Set-Cookie": "comelit_ext_page="
+          }
+        },
+        "issue": "Comelit Multi-apartment Gateway Default Password - admin"
+      },
+      "Heatmiser Wifi Thermostat": {
+        "tag": "Heatmiser",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "lgnm=admin&lgpw=admin",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["document.logfm.lgst.value", "basicset.htm", "left.htm", "right.htm"]
+        },
+        "issue": "Heatmiser Wifi Thermostat Default Password - admin:admin"
       }
     },
     "DUMMY": {
@@ -99,6 +198,7 @@
             "Accept-Language": "en-US,en;q=0.9",
             "Cookie": "Authorization=Basic%20YWRtaW46MjEyMzJmMjk3YTU3YTVhNzQzODk0YTBlNGE4MDFmYzM%3D"        
           },
+          "body": "test",
           "method": "GET"
         },
         "matchers": {
