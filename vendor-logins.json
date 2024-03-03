@@ -235,6 +235,81 @@
             "strings": ["\"isDefaultPW\":\"1\"", "\"status\":0"]
         },
         "issue": "WAGO Ethernet Web-Based Management Default Password - admin:wago"
+      },
+      "NETSurveillance Web": {
+        "tag": "NETSurveillance",
+        "payload": {
+          "paths": ["/Login.htm"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "command=login&username=admin&password=",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["g_SoftWareVersion", "playView"]
+        },
+        "issue": "NETSurveillance Web Default Password - admin:blank"
+      },
+      "Fibaro Home Center": {
+        "tag": "Fibaro",
+        "payload": {
+          "paths": ["/api/loginStatus?action=login"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close",
+            "Authorization": "Basic YWRtaW46YWRtaW4=="
+          },
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["status", "username", "type"]
+        },
+        "issue": "Fibaro Home Center Default Password - admin:admin"
+      },
+      "MobinNet Router": {
+        "tag": "MobinNet",
+        "payload": {
+          "paths": ["/cgi-bin/login.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "Command=Submit&expires=Mon%2C+04+Mar+2024+11%3A35%3A34+GMT&browserTime=030317052024&currentTime=1709465734&user=admin&password=admin",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["initialize", "getCommonJScript", "getCookie"]
+        },
+        "issue": "MobinNet Router Default Password - admin:admin"
       }
     },
     "DUMMY": {

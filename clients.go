@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"fmt"
 	"net/http"
 	"strings"
@@ -16,6 +17,9 @@ func makeHTTPRequest(url string, headers map[string]string, body string, method 
 				return fmt.Errorf("too many redirects")
 			}
 			return nil
+		},
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, // Disable SSL certificate verification
 		},
 	}
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"fmt"
 	"io"
 	"net/http"
@@ -19,7 +20,6 @@ func targetDetection(target string) (string, string, string) {
 	// PERFORM FINGERPRINTING
 
 	respBody, _ := io.ReadAll(resp.Body)
-
 	// ITERATE OVER ALL DB ENTRIES
 	for product, entry := range genzaiDB {
 		if entry.Matchers.Condition == "OR" {
@@ -67,6 +67,9 @@ func makeGetRequest(url string) (*http.Response, error) {
 			return nil
 		},
 		Timeout: 30 * time.Second, // Set timeout to 30 seconds
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, // Disable SSL certificate verification
+		},
 	}
 
 	resp, err := client.Get(url)
