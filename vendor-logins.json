@@ -310,6 +310,159 @@
             "strings": ["initialize", "getCommonJScript", "getCookie"]
         },
         "issue": "MobinNet Router Default Password - admin:admin"
+      },
+      "D-Link Router": {
+        "tag": "D-Link",
+        "payload": {
+          "paths": ["session.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close",
+            "Cookie": "uid=R9XtxJ9Z2l"
+          },
+        "body": "REPORT_METHOD=xml&ACTION=login_digest&USER=Admin&PASSWD=d41d8cd98f00b204e9800998ecf8427e&CAPTCHA=",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["SUCCESS"]
+        },
+        "issue": "D-Link Router Default Password - admin:blank"
+      },
+      "Comcast Xfinity Gateway": {
+        "tag": "Xfinity",
+        "payload": {
+          "paths": ["check.php"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "username=admin&password=password",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "headers": {
+              "Set-Cookie": "PHPSESSID="
+          }
+        },
+        "issue": "Comcast Xfinity Gateway Default Password - admin:password"
+      },
+      "Walchem Watertreatment System 1": {
+        "tag": "Walchem",
+        "payload": {
+          "paths": ["1001.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "username=********&enusername=3d38313532&password=********&enpassword=69696969&Login=Log+In",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Home", "Controller<span"]
+        },
+        "issue": "Walchem Watertreatment System Default Password - admin:5555"
+      },
+      "Walchem Watertreatment System 2": {
+        "tag": "Walchem",
+        "payload": {
+          "paths": ["1001.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "username=********&enusername=292f392e&password=********&enpassword=6d6d6d6d&Login=Log+In",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Home", "Controller<span"]
+        },
+        "issue": "Walchem Watertreatment System Default Password - user:1111"
+      },
+      "Walchem Watertreatment System 3": {
+        "tag": "Walchem",
+        "payload": {
+          "paths": ["1001.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "username=********&enusername=3d38313532&password=********&enpassword=070ba287b2ebc7e368e91d65a827fe937ddf4c35f6be82e2bb78cac762b3fde0&Login=Log+In",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Home", "Controller"]
+        },
+        "issue": "Walchem Watertreatment System Default Password - admin:5555"
+      },
+      "Walchem Watertreatment System 4": {
+        "tag": "Walchem",
+        "payload": {
+          "paths": ["1001.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "username=********&enusername=292f392e&password=********&enpassword=3d0178c56ddd5f222bcd1e1e4d0a03b66a3ee3de795e2272ee66be337f3c014f&Login=Log+In",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Home", "Controller"]
+        },
+        "issue": "Walchem Watertreatment System Default Password - user:1111"
       }
     },
     "DUMMY": {
