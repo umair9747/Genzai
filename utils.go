@@ -46,3 +46,16 @@ func loadVendorDB() {
 		os.Exit(0)
 	}
 }
+
+func loadVendorVulnsDB() {
+	fileContent, err := ioutil.ReadFile("vendor-vulns.json")
+	if err != nil {
+		log.Println("error reading file: ", err)
+		os.Exit(0)
+	}
+	err = json.Unmarshal(fileContent, &vendorVulnsDB)
+	if err != nil {
+		log.Println("Error decoding JSON:", err)
+		os.Exit(0)
+	}
+}

@@ -7,29 +7,31 @@ import (
 	"strings"
 )
 
-func vendorpassScan(target string, product string, tag string) Issue {
-	var vendorpassIssue Issue
+func vendorvulnScan(target string, product string, tag string) []Issue {
+	var vendorVulnIssues []Issue
 	if !strings.HasSuffix(target, "/") {
 		target += "/"
 	}
-	for _, entry := range vendorDB.Entries {
+	for _, entry := range vendorVulnsDB.Entries {
+		var vendorVulnIssue Issue
 		if entry.Tag == tag { // LOOK FOR THE EXACT VENDOR PASS ENTRY WE WANNA TRY
 			for _, payloadPath := range entry.Payload.Paths {
 				resp, err := makeHTTPRequest(target+payloadPath, entry.Payload.Headers, entry.Payload.Body, entry.Payload.Method)
 				if err != nil { // IF THERE WAS AN ERROR MAKING THE REQ
 					log.Println(err)
-					return vendorpassIssue
+					continue
 				} else { // IF THERE WERE NO ERRORS
 
 					//DO THE MATCHING OVER HERE
 					// FIRST DO NON-200 STATUS CODE MATCHES HERE
 					if entry.Matchers.ResponseCode != 200 {
 						if resp.StatusCode == entry.Matchers.ResponseCode {
-							log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
-							vendorpassIssue.IssueTitle = entry.Issue
-							vendorpassIssue.URL = target + payloadPath
-							vendorpassIssue.AdditionalContext = "The resulting non-200 status code matched with the one in DB."
-							return vendorpassIssue
+							log.Println(target, "[", product, "]", "is vulnerable - ", entry.Issue)
+							vendorVulnIssue.IssueTitle = entry.Issue
+							vendorVulnIssue.URL = target + payloadPath
+							vendorVulnIssue.AdditionalContext = "The resulting non-200 status code matched with the one in DB."
+							vendorVulnIssues = append(vendorVulnIssues, vendorVulnIssue)
+							break
 						}
 					}
 
@@ -37,11 +39,12 @@ func vendorpassScan(target string, product string, tag string) Issue {
 
 					if entry.Matchers.Responsepath != "" {
 						if strings.Contains(resp.Request.URL.Path, entry.Matchers.Responsepath) {
-							log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
-							vendorpassIssue.IssueTitle = entry.Issue
-							vendorpassIssue.URL = target + payloadPath
-							vendorpassIssue.AdditionalContext = "The resulting URL path matched with the one in DB."
-							return vendorpassIssue
+							log.Println(target, "[", product, "]", "is vulnerable - ", entry.Issue)
+							vendorVulnIssue.IssueTitle = entry.Issue
+							vendorVulnIssue.URL = target + payloadPath
+							vendorVulnIssue.AdditionalContext = "The resulting URL path matched with the one in DB."
+							vendorVulnIssues = append(vendorVulnIssues, vendorVulnIssue)
+							break
 						}
 					}
 
@@ -51,11 +54,12 @@ func vendorpassScan(target string, product string, tag string) Issue {
 							for key, values := range resp.Header {
 								for _, value := range values {
 									if strings.EqualFold(strings.ToLower(headerKey), strings.ToLower(key)) && strings.Contains(strings.ToLower(value), strings.ToLower(headerValue)) {
-										log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
-										vendorpassIssue.IssueTitle = entry.Issue
-										vendorpassIssue.URL = target + payloadPath
-										vendorpassIssue.AdditionalContext = "The resulting headers matched with those in the DB."
-										return vendorpassIssue
+										log.Println(target, "[", product, "]", "is vulnerable  - ", entry.Issue)
+										vendorVulnIssue.IssueTitle = entry.Issue
+										vendorVulnIssue.URL = target + payloadPath
+										vendorVulnIssue.AdditionalContext = "The resulting headers matched with those in the DB."
+										vendorVulnIssues = append(vendorVulnIssues, vendorVulnIssue)
+										break
 									}
 								}
 							}
@@ -68,11 +72,12 @@ func vendorpassScan(target string, product string, tag string) Issue {
 						for _, matchString := range entry.Matchers.Strings {
 							matchRe := regexp.MustCompile(strings.ToLower(matchString))
 							if matchRe.MatchString(strings.ToLower(string(respBody))) {
-								log.Println(target, "[", product, "]", "is vulnerable with default password - ", entry.Issue)
-								vendorpassIssue.IssueTitle = entry.Issue
-								vendorpassIssue.URL = target + payloadPath
-								vendorpassIssue.AdditionalContext = "The resulting body had matching strings from the DB."
-								return vendorpassIssue
+								log.Println(target, "[", product, "]", "is vulnerable - ", entry.Issue)
+								vendorVulnIssue.IssueTitle = entry.Issue
+								vendorVulnIssue.URL = target + payloadPath
+								vendorVulnIssue.AdditionalContext = "The resulting body had matching strings from the DB."
+								vendorVulnIssues = append(vendorVulnIssues, vendorVulnIssue)
+								break
 							}
 						}
 					}
@@ -97,5 +102,5 @@ func vendorpassScan(target string, product string, tag string) Issue {
 			}
 		}
 	}
-	return vendorpassIssue
+	return vendorVulnIssues
 }

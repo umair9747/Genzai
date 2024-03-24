@@ -10,10 +10,12 @@ func main() {
 	takeInput()
 	if len(targets) > 0 {
 		log.Println("Genzai is starting...")
-		log.Println("Loading Genzai DB...")
+		log.Println("Loading Genzai Signatures DB...")
 		loadDB()
-		log.Println("Loading Vendor DB...")
+		log.Println("Loading Vendor Passwords DB...")
 		loadVendorDB()
+		log.Println("Loading Vendor Vulnerabilities DB...")
+		loadVendorVulnsDB()
 		fmt.Println("\n ")
 	}
 
@@ -34,7 +36,13 @@ func main() {
 			if passIssue.URL != "" {
 				targetResult.Issues = append(targetResult.Issues, passIssue)
 			}
-
+			log.Println("Scanning for any known vulnerabilities from the DB related to", product)
+			vulnIssues := vendorvulnScan(target, product, tag)
+			for _, vulnIssue := range vulnIssues {
+				if vulnIssue.URL != "" {
+					targetResult.Issues = append(targetResult.Issues, vulnIssue)
+				}
+			}
 			genzaiOutput.Results = append(genzaiOutput.Results, targetResult)
 		}
 	}

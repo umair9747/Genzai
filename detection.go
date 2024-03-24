@@ -28,7 +28,7 @@ func targetDetection(target string) (string, string, string) {
 				for headerKey, headerValue := range entry.Matchers.Headers {
 					for key, values := range resp.Header {
 						for _, value := range values {
-							if strings.ToLower(headerKey) == strings.ToLower(key) && strings.Contains(strings.ToLower(value), strings.ToLower(headerValue.(string))) {
+							if strings.EqualFold(strings.ToLower(headerKey), strings.ToLower(key)) && strings.Contains(strings.ToLower(value), strings.ToLower(headerValue.(string))) {
 								return product, entry.Category, entry.Tag
 							}
 						}
@@ -91,7 +91,7 @@ func andConditionMatcher(entry Entry, resp *http.Response, respBody []byte) bool
 		for headerKey, headerValue := range entry.Matchers.Headers {
 			for key, values := range resp.Header {
 				for _, value := range values {
-					if strings.ToLower(headerKey) == strings.ToLower(key) && strings.Contains(strings.ToLower(value), strings.ToLower(headerValue.(string))) {
+					if strings.EqualFold(strings.ToLower(headerKey), strings.ToLower(key)) && strings.Contains(strings.ToLower(value), strings.ToLower(headerValue.(string))) {
 						headerScore++
 					}
 				}
