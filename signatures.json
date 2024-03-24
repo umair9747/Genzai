@@ -15,7 +15,6 @@
             "Server": "Router Webserver",
             "Www-Authenticate": "Basic realm=\"TP-Link"
           },
-          "strings": ["TP-LINK Technologies Co., Ltd. All rights reserved."],
           "response_code": 200,
           "condition": "AND"
         },
@@ -182,7 +181,19 @@
         },
         "category": "Water Treatment System",
         "tag": "Walchem"
-      }                          
+      }
+      , 
+      "Linksys Wireless Router": {
+        "matchers": {
+          "headers": {
+            "WWW-Authenticate": "Basic realm=\"Linksys"
+          },
+          "response_code": 401,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "Linksys"
+      }                            
     }
   }
   
