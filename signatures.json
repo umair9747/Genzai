@@ -181,8 +181,7 @@
         },
         "category": "Water Treatment System",
         "tag": "Walchem"
-      }
-      , 
+      }, 
       "Linksys Wireless Router": {
         "matchers": {
           "headers": {
@@ -193,6 +192,18 @@
         },
         "category": "Router",
         "tag": "Linksys"
+      },
+      "ContaCam Video Surveillance": {
+        "matchers": {
+          "headers": {
+            "X-Powered-By": "PHP"
+          },
+          "strings": ["<title>ContaCam</title>"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Camera",
+        "tag": "ContaCam"
       }                            
     }
   }
