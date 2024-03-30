@@ -42,3 +42,12 @@ Based on the IoT product identified and the presence of a relevant template in <
 Also based on the IoT product identified and with the presence of a relevant template in <a href="./vendor-vulns.json">Vendor Vulns DB</a>, Genzai will check for any potential vulnerabilities across the target. While some of the templates actively flag issues based on an exposed endpoint or file, others may flag based on a vulnerable version.
 </div>
 
+<div id="acknowledgements">
+<h2> Acknowledgements </h2>
+Genzai has been or will be noticed at,
+<ul type="disc">
+<li><a href="https://www.blackhat.com/asia-24/arsenal/schedule/index.html#genzai---the-iot-security-toolkit-37373">Black Hat Asia 2024 [Arsenal]</a></li>
+<li>GISEC Armory Edition 1 Dubai 2024</li>
+
+</ul>
+</div>
