@@ -34,16 +34,30 @@ To run it against a single target,
 ```
 ./genzai http://1.1.1.1/
 ```
-<br>
 To run it against multiple targets passed directly through CLI,
 
 ```
 ./genzai http://1.1.1.1/ http://8.8.8.8/
 ```
-<br>
 To run it against multiple targets passed through an input file,
 
 ```
 ./genzai targets.txt
 ```
+
+<h4>2. Logging the Output</h4>
+If you'd like to log the output from Genzai in some file, you have the <b>-save</b> flag to the rescue! The flag will log the output in a file named output.json by default if no additional value is provided along with the flag.
+
+<br>
+So, in order to log the output in a specific file name, you will use,
+
+```
+./genzai http://1.1.1.1 -save myfile.json
+```
+
+And with the below example, it will be saved to output.json by default.
+```
+./genzai http://1.1.1.1 -save
+```
+
 </div>
