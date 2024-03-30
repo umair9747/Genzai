@@ -1,7 +1,7 @@
 <h1 align="center">Genzai</h1>
 <p align="center"><b>The IoT Security Toolkit</b></p>
 <p align="center">
-<a href="#description">Description</a> • <a href="#features">Features</a> • <a href="#setupnusage">Setup & Usage</a> • <a href="#acknowledgements">Acknowledgements</a><br>
+<a href="#description">Description</a> • <a href="#features">Features</a> • <a href="./docs/documentation.md#setupnusage">Setup & Usage</a> • <a href="#acknowledgements">Acknowledgements</a><br>
 </p>
 <hr>
 <img src="./genzai.png">
@@ -43,8 +43,3 @@ Based on the IoT product identified and the presence of a relevant template in <
 Also based on the IoT product identified and with the presence of a relevant template in <a href="./vendor-vulns.json">Vendor Vulns DB</a>, Genzai will check for any potential vulnerabilities across the target. While some of the templates actively flag issues based on an exposed endpoint or file, others may flag based on a vulnerable version.
 </div>
 
-<div id="setupnusage">
-<h2> Setup and Usage </h2>
-<h3> Setup </h3>
-
-</div>
