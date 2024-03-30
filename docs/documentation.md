@@ -25,4 +25,25 @@ go build
 
 <h3> Usage </h3>
 
+<h4>1. Basic Usage</h4>
+In order to get started with Genzai and run it straightaway, you just need to provide your target(s) as input to the tool. This can be mainly done in the following ways,
+
+<br>
+To run it against a single target,
+
+```
+./genzai http://1.1.1.1/
+```
+<br>
+To run it against multiple targets passed directly through CLI,
+
+```
+./genzai http://1.1.1.1/ http://8.8.8.8/
+```
+<br>
+To run it against multiple targets passed through an input file,
+
+```
+./genzai targets.txt
+```
 </div>
