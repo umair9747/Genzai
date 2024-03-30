@@ -3,7 +3,12 @@
 <p align="center">
 <a href="#description">Description</a> • <a href="#features">Features</a> • <a href="./docs/documentation.md#setupnusage">Setup & Usage</a> • <a href="#acknowledgements">Acknowledgements</a><br>
 
-<center><img src="https://img.shields.io/badge/Version-1.0-green"><img src="https://img.shields.io/badge/Black%20Hat%20Arsenal-%20Asia%202024-blue"><img src="https://img.shields.io/badge/GISEC Armory-%20Dubai%202024-blue"></center>
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-1.0-green">
+  <img src="https://img.shields.io/badge/Black%20Hat%20Arsenal-%20Asia%202024-blue">
+  <img src="https://img.shields.io/badge/GISEC Armory-%20Dubai%202024-blue">
+  </a>
+</p>
 
 </p>
 <hr>
