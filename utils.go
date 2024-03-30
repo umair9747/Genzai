@@ -65,5 +65,5 @@ func logData(data string, filename string) {
 	if err != nil {
 		log.Println("Error while logging the output", err.Error())
 	}
-	fmt.Printf("\nLogged the output in %s!\n", filename)
+	fmt.Printf("\nLogged the output in %s!", filename)
 }

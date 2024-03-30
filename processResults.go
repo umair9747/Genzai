@@ -41,7 +41,7 @@ func generateOutput() {
 		} else {
 			logData(string(genzaiJson), saveOutput)
 		}
-		fmt.Println("\n\n ")
+		fmt.Println("\n ")
 		fmt.Println(string(genzaiJson))
 	}
 }
