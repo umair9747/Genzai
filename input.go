@@ -36,12 +36,18 @@ func takeInput() {
 						fmt.Println("Error reading file:", err)
 						os.Exit(0)
 					}
-					targets = append(targets, strings.Split(string(content), "\n")...)
-				}
-				if !strings.HasPrefix(arg, "http") {
-					targets = append(targets, "http://"+arg)
+					targs := strings.Split(string(content), "\n")
+					for _, targ := range targs {
+						if targ != "" {
+							targets = append(targets, targ)
+						}
+					}
 				} else {
-					targets = append(targets, arg)
+					if !strings.HasPrefix(arg, "http") {
+						targets = append(targets, "http://"+arg)
+					} else {
+						targets = append(targets, arg)
+					}
 				}
 			}
 		}
