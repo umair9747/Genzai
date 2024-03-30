@@ -45,7 +45,7 @@ To run it against multiple targets passed through an input file,
 ./genzai targets.txt
 ```
 
-<h4>2. Logging the Output</h4>
+<h4>2. Output</h4>
 If you'd like to log the output from Genzai in some file, you have the <b>-save</b> flag to the rescue! The flag will log the output in a file named output.json by default if no additional value is provided along with the flag.
 
 <br><br>
@@ -60,4 +60,95 @@ And with the below example, it will be saved to output.json by default.
 ./genzai http://1.1.1.1 -save
 ```
 
+<br><br>
+Let's also discuss about the format of output that Genzai returns. It will be in the below format:
+
+<br>
+
+```
+{
+  "Response": {
+    "Results": [
+      {
+        "Target": "",
+        "IoTidentified": "",
+        "category": "",
+        "Issues": [
+          {
+            "IssueTitle": "",
+            "URL": "",
+            "AdditionalContext": ""
+          }
+        ]
+      }
+    ],
+    "Targets": []
+  }
+}
+
+```
+The results array contains the entries for all the IoT related assets that were successfully identified and scanned. Target field contains the URL of the asset, IoTidentified contains the product name, category contains the exact category the IoT product belongs to, Issues array will be populated with all the issues identified with the asset such as any potential vulnerabilities and default password issues.<br>
+Finally, the Targets array contains the list of all targets that were scanned using the tool irrespective of them being identified as an IoT asset or not.
+
+
+The below example output would hopefully give you a glimpse of the format,
+
+<br>
+
+```
+./genzai http://1.1.1.1/
+
+::::::::   :::::::::: ::::    ::: :::::::::     :::     ::::::::::: 
+:+:    :+: :+:        :+:+:   :+:      :+:    :+: :+:       :+:     
++:+        +:+        :+:+:+  +:+     +:+    +:+   +:+      +:+     
+:#:        +#++:++#   +#+ +:+ +#+    +#+    +#++:++#++:     +#+     
++#+   +#+# +#+        +#+  +#+#+#   +#+     +#+     +#+     +#+     
+#+#    #+# #+#        #+#   #+#+#  #+#      #+#     #+#     #+#     
+ ########  ########## ###    #### ######### ###     ### ########### 
+
+        The IoT Security Toolkit by Umair Nehri (0x9747)
+
+
+2024/03/30 23:19:47 Genzai is starting...
+2024/03/30 23:19:47 Loading Genzai Signatures DB...
+2024/03/30 23:19:47 Loading Vendor Passwords DB...
+2024/03/30 23:19:47 Loading Vendor Vulnerabilities DB...
+
+ 
+
+2024/03/30 23:19:47 Starting the scan for http://1.1.1.1/
+2024/03/30 23:19:49 IoT Dashboard Discovered: TP-Link Wireless Router
+2024/03/30 23:19:49 Trying for default vendor-specific [ TP-Link Wireless Router ] passwords...
+2024/03/30 23:19:51 http://1.1.1.1/ [ TP-Link Wireless Router ] is vulnerable with default password -  TP-Link Router Default Password - admin:admin
+2024/03/30 23:19:51 Scanning for any known vulnerabilities from the DB related to TP-Link Wireless Router
+2024/03/30 23:19:57 http://1.1.1.1/ [ TP-Link Wireless Router ] is vulnerable  -  TP-LINK Wireless N Router WR841N Potentially Vulnerable to Buffer Overflow - CVE-2020-8423
+
+2024/03/30 23:20:45 No file name detected to log the output. Skipping to printing it!
+
+ 
+{
+    "Results": [
+        {
+            "Target": "http://1.1.1.1/",
+            "IoTidentified": "TP-Link Wireless Router",
+            "category": "Router",
+            "Issues": [
+                {
+                    "IssueTitle": "TP-Link Router Default Password - admin:admin",
+                    "URL": "http://1.1.1.1/userRpm/LoginRpm.htm?Save=Save",
+                    "AdditionalContext": "The resulting body had matching strings from the DB."
+                },
+                {
+                    "IssueTitle": "TP-LINK Wireless N Router WR841N Potentially Vulnerable to Buffer Overflow - CVE-2020-8423",
+                    "URL": "http://1.1.1.1/",
+                    "AdditionalContext": "The resulting headers matched with those in the DB."
+                }
+            ]
+        }
+    ],
+    "Targets": [
+        "http://1.1.1.1/"
+    ]
+}
+```
 </div>
