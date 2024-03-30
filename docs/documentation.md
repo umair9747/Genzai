@@ -4,7 +4,7 @@
 <a href="../README.md#description">Description</a> • <a href="../README.md#features">Features</a> • <a href="#setupnusage">Setup & Usage</a> • <a href="#acknowledgements">Acknowledgements</a><br>
 </p>
 <hr>
-<br>
+
 
 <div id="setupnusage">
 <h2> Setup and Usage </h2>

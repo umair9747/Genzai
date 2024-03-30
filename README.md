@@ -7,7 +7,6 @@
 <img src="./genzai.png">
 <hr style="width:300px; height: 1px; margin: auto; margin-top: 20px;" />
 <br>
-
 <div id="description">
 <h2> Description </h2>
 Genzai helps you identify IoT or Internet of Things related dashboards across a single or set of targets provided as an input and furthermore scan them for default password issues and potential vulnerabilities based on paths and versions.
