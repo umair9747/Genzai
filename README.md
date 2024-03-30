@@ -55,7 +55,7 @@ Also based on the IoT product identified and with the presence of a relevant tem
 Genzai has been or will be noticed at,
 <ul type="disc">
 <li><a href="https://www.blackhat.com/asia-24/arsenal/schedule/index.html#genzai---the-iot-security-toolkit-37373">Black Hat Asia 2024 [Arsenal]</a></li>
-<li>GISEC Armory Edition 1 Dubai 2024</li>
+<li><a href="https://www.gisec.ae/gisec-armory">GISEC Armory Edition 1 Dubai 2024</a></li>
 
 </ul>
 </div>
