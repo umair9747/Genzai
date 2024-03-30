@@ -53,6 +53,8 @@ var vendorDB MyVendorLogins
 var vendorVulnsDB MyVendorLogins
 var genzaiDB DynamicEntries
 
+var saveOutput string
+
 var banner = `
 ::::::::   :::::::::: ::::    ::: :::::::::     :::     ::::::::::: 
 :+:    :+: :+:        :+:+:   :+:      :+:    :+: :+:       :+:     

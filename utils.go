@@ -59,3 +59,11 @@ func loadVendorVulnsDB() {
 		os.Exit(0)
 	}
 }
+func logData(data string, filename string) {
+	// Write the string data to the file
+	err := ioutil.WriteFile(filename, []byte(data), 0644)
+	if err != nil {
+		log.Println("Error while logging the output", err.Error())
+	}
+	fmt.Printf("\nLogged the output in %s!\n", filename)
+}

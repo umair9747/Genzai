@@ -35,6 +35,12 @@ func generateOutput() {
 		log.Println(genzaiOutput)
 		log.Println(err)
 	} else {
+		if saveOutput == "" {
+			fmt.Println("")
+			log.Println("No file name detected to log the output. Skipping to printing it!")
+		} else {
+			logData(string(genzaiJson), saveOutput)
+		}
 		fmt.Println("\n\n ")
 		fmt.Println(string(genzaiJson))
 	}
