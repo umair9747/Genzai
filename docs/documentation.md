@@ -28,7 +28,7 @@ go build
 <h4>1. Basic Usage</h4>
 In order to get started with Genzai and run it straightaway, you just need to provide your target(s) as input to the tool. This can be mainly done in the following ways,
 
-<br>
+<br><br>
 To run it against a single target,
 
 ```
@@ -48,7 +48,7 @@ To run it against multiple targets passed through an input file,
 <h4>2. Logging the Output</h4>
 If you'd like to log the output from Genzai in some file, you have the <b>-save</b> flag to the rescue! The flag will log the output in a file named output.json by default if no additional value is provided along with the flag.
 
-<br>
+<br><br>
 So, in order to log the output in a specific file name, you will use,
 
 ```
