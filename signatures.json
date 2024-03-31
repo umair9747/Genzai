@@ -204,6 +204,17 @@
         },
         "category": "Camera",
         "tag": "ContaCam"
+      },
+      "Netwave IP Camera": {
+        "matchers": {
+          "headers": {
+            "Server": "Netwave IP Camera"
+          },
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Camera",
+        "tag": "Netwave"
       }                            
     }
   }
