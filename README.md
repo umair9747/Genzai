@@ -62,7 +62,7 @@ Genzai has been or will be noticed at,
 
 <div id="contact">
 <h2> Let's Connect! </h2>
-If you have any questions or feedback about Genzai or just want to connect with me, feel free to reach out via <a href="https://in.linkedin.com/in/umair-nehri-49699317a">LinkedIn</a> or <a href="mailto:umairnehri9747@gmail.com">Email</a>
+If you have any questions or feedback about Genzai or just want to connect with me, feel free to reach out via <a href="https://in.linkedin.com/in/umair-nehri-49699317a">LinkedIn</a> or <a href="mailto:umairnehri9747@gmail.com">Email</a>.
 </div>
 
 <h2>Legal Disclaimer</h2>
