@@ -1,8 +1,16 @@
 <h1 align="center">Genzai</h1>
 <p align="center"><b>The IoT Security Toolkit</b></p>
 <p align="center">
-<a href="../README.md#description">Description</a> • <a href="../README.md#features">Features</a> • <a href="#setupnusage">Setup & Usage</a> • <a href="#acknowledgements">Acknowledgements</a><br>
+<a href="../README.md#description">Description</a> • <a href="../README.md#features">Features</a> • <a href="#setupnusage">Setup & Usage</a> • <a href="../README.md#acknowledgements">Acknowledgements</a> • <a href="../README.md#contact">Contact Me</a><br>
 </p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-1.0-green">
+  <img src="https://img.shields.io/badge/Black%20Hat%20Arsenal-%20Asia%202024-blue">
+  <img src="https://img.shields.io/badge/GISEC Armory-%20Dubai%202024-blue">
+  <a href="https://www.buymeacoffee.com/umair9747" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 21px !important;width: 94px !important;" ></a>
+</p>
+
 <hr>
 
 

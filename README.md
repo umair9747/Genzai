@@ -1,7 +1,7 @@
 <h1 align="center">Genzai</h1>
 <p align="center"><b>The IoT Security Toolkit</b></p>
 <p align="center">
-<a href="#description">Description</a> • <a href="#features">Features</a> • <a href="./docs/documentation.md#setupnusage">Setup & Usage</a> • <a href="#acknowledgements">Acknowledgements</a><br>
+<a href="#description">Description</a> • <a href="#features">Features</a> • <a href="./docs/documentation.md#setupnusage">Setup & Usage</a> • <a href="#acknowledgements">Acknowledgements</a> • <a href="#contact">Contact Me</a><br>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Version-1.0-green">
@@ -59,3 +59,11 @@ Genzai has been or will be noticed at,
 
 </ul>
 </div>
+
+<div id="contact">
+<h2> Let's Connect! </h2>
+If you have any questions or feedback about Genzai or just want to connect with me, feel free to reach out via <a href="https://in.linkedin.com/in/umair-nehri-49699317a">LinkedIn</a> or <a href="mailto:umairnehri9747@gmail.com">Email</a>
+</div>
+
+<h2>Legal Disclaimer</h2>
+Usage of Genzai for scanning or attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program.
