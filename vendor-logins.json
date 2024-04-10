@@ -275,7 +275,7 @@
             "Accept-Encoding": "gzip, deflate, br",
             "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
             "Connection": "close",
-            "Authorization": "Basic YWRtaW46YWRtaW4=="
+            "Authorization": "Basic YWRtaW46YWRtaW4="
           },
         "method": "GET"
         },
