@@ -13,7 +13,7 @@ func printBanner() {
 }
 
 func loadDB() {
-	fileContent, err := os.ReadFile("signatures.json")
+	fileContent, err := os.ReadFile("data/signatures.json")
 	if err != nil {
 		log.Println("error reading file: ", err)
 		os.Exit(0)
@@ -35,7 +35,7 @@ func loadDB() {
 }
 
 func loadVendorDB() {
-	fileContent, err := ioutil.ReadFile("vendor-logins.json")
+	fileContent, err := ioutil.ReadFile("data/vendor-logins.json")
 	if err != nil {
 		log.Println("error reading file: ", err)
 		os.Exit(0)
@@ -48,7 +48,7 @@ func loadVendorDB() {
 }
 
 func loadVendorVulnsDB() {
-	fileContent, err := ioutil.ReadFile("vendor-vulns.json")
+	fileContent, err := ioutil.ReadFile("data/vendor-vulns.json")
 	if err != nil {
 		log.Println("error reading file: ", err)
 		os.Exit(0)

@@ -13,12 +13,12 @@ type Issue struct {
 	AdditionalContext string `json:"AdditionalContext"`
 }
 
-// Result represents each result item in the Results array
 type genzaiResult struct {
-	Target        string  `json:"Target"`
-	IoTidentified string  `json:"IoTidentified"`
+	Target        string  `json:"target"`
+	IoTidentified string  `json:"iot_identified"`
 	Category      string  `json:"category"`
-	Issues        []Issue `json:"Issues"`
+	Issues        []Issue `json:"issues,omitempty"`
+	Error         string  `json:"error,omitempty"`
 }
 
 // Response represents the overall structure of the JSON
