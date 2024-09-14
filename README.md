@@ -64,11 +64,6 @@ Genzai has been or will be noticed at:
 <li><a href="https://www.gisec.ae/gisec-armory">GISEC Armory Edition 1 Dubai 2024</a></li>
 </ul>
 
-Special thanks to:
-<ul type="disc">
-<li><a href="https://github.com/rumble773">rumble773</a> for significant contributions to the API implementation and concurrent scanning features.</li>
-</ul>
-</div>
 
 <div id="contact">
 <h2> Contact </h2>
@@ -80,3 +75,5 @@ If you have any questions or feedback about Genzai, feel free to reach out:
 
 <h2>Legal Disclaimer</h2>
 Usage of Genzai for scanning or attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program.
+
+
