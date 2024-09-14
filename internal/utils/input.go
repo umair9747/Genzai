@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"github.com/rumble773/Genzai-UI/internal/models"
 )
 
 func takeInput() {

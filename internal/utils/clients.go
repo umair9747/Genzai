@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
+	"github.com/rumble773/Genzai-UI/internal/models"
 )
 
 func makeHTTPRequest(url string, headers map[string]string, body string, method string) (*http.Response, error) {

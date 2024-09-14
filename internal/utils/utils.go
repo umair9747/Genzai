@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"github.com/rumble773/Genzai-UI/internal/models"
 )
 
 func printBanner() {

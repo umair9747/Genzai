@@ -15,10 +15,9 @@ import (
 	"github.com/gorilla/mux"
 	
 	"github.com/rumble773/Genzai-UI/internal/detection"
-	"github.com/rumble773/Genzai-UI/internal/scan"
-	"github.com/rumble773/Genzai-UI/internal/types"
-	"github.com/rumble773/Genzai-UI/internal/utils"
-
+    "github.com/rumble773/Genzai-UI/internal/models"
+    "github.com/rumble773/Genzai-UI/internal/scan"
+    "github.com/rumble773/Genzai-UI/internal/utils"
 )
 
 var (

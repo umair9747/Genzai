@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"github.com/rumble773/Genzai-UI/internal/models"
 )
 
 // Issue represents an individual issue within the Results structure

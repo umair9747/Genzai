@@ -5,6 +5,9 @@ import (
 	"log"
 	"regexp"
 	"strings"
+
+    "github.com/rumble773/Genzai-UI/internal/models"
+    "github.com/rumble773/Genzai-UI/internal/utils"
 )
 
 func vendorpassScan(target string, product string, tag string) Issue {

@@ -1,4 +1,4 @@
-package types
+package models
 
 var args []string
 var targets []string
