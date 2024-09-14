@@ -1,4 +1,4 @@
-package main
+package types
 
 var args []string
 var targets []string

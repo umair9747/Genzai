@@ -1,4 +1,4 @@
-package main
+package detection
 
 import (
 	"crypto/tls"
