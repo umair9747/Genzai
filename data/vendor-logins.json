@@ -1,0 +1,518 @@
+{
+    "entries": {
+      "TP-Link Router": {
+        "tag": "TP-Link",
+        "payload": {
+          "paths": ["userRpm/LoginRpm.htm?Save=Save"],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Cookie": "Authorization=Basic%20YWRtaW46MjEyMzJmMjk3YTU3YTVhNzQzODk0YTBlNGE4MDFmYzM%3D"        
+          },
+          "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "/userRpm/Index.htm",
+            "strings": ["/userRpm/Index.htm"]
+        },
+        "issue": "TP-Link Router Default Password - admin:admin"
+      },
+      "Edimax Router": {
+        "tag": "Edimax",
+        "payload": {
+          "paths": ["information.asp"],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Authorization": "Basic YWRtaW46MTIzNA=="        
+          },
+          "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "/index.asp",
+            "strings": ["ActDHCPClient_fieldset", "showWirelessClient"]
+        },
+        "issue": "Edimax Router Default Password - admin:1234"
+      },
+      "IP Camera": {
+        "tag": "IPCamera",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Authorization": "Basic YWRtaW46YWRtaW4="
+        },        
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["cmd=getlanguage", "/web/ClientPlus_Setup.exe"],
+            "headers": {
+              "Server": "Hipcam"
+          }
+        },
+        "issue": "IP Camera Default Password - admin:admin"
+      },
+      "Asus Wireless Router RT-N12E": {
+        "tag": "Asus",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Authorization": "Basic YWRtaW46YWRtaW4="
+        },        
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["login_ip_str", "device-map", "set_default_choice"]
+        },
+        "issue": "Asus Wireless Router RT-N12E Default Password - admin:admin"
+      },
+      "Omron NS web interface": {
+        "tag": "Omron",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Authorization": "Basic ZGVmYXVsdDpkZWZhdWx0"
+        },        
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["NS Web Interface Menu", "Copyright OMRON Corporation"]
+        },
+        "issue": "Omron NS web interface Default Password - default:default"
+      },
+      "ANEL-Elektronik NET-PwrCtrl": {
+        "tag": "ANEL-Elektronik",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "identity",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Authorization": "Basic YWRtaW46YW5lbA=="
+        },        
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["ANEL-Elektronik NET-PwrCtrl", "Logout", "ctrl.htm"],
+            "headers": {
+              "Access-Control-Allow-Origin": "*",
+              "Cache-Control": "max-age=600"
+          }
+        },
+        "issue": "ANEL-Elektronik NET-PwrCtrl Default Password - admin:anel"
+      },
+      "Comelit Multi-apartment Gateway": {
+        "tag": "Comelit",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "l-pwd=admin",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Access granted as", "by Comelit S.p.A. All rights reserved."],
+            "headers": {
+              "Set-Cookie": "comelit_ext_page="
+          }
+        },
+        "issue": "Comelit Multi-apartment Gateway Default Password - admin"
+      },
+      "Heatmiser Wifi Thermostat": {
+        "tag": "Heatmiser",
+        "payload": {
+          "paths": [""],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "lgnm=admin&lgpw=admin",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["document.logfm.lgst.value", "basicset.htm", "left.htm", "right.htm"]
+        },
+        "issue": "Heatmiser Wifi Thermostat Default Password - admin:admin"
+      },
+      "WAGO Ethernet Web-Based Management - 1": {
+        "tag": "WAGO",
+        "payload": {
+          "paths": ["/webserv/cplcfg/diskinfo.ssi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close",
+            "Authorization": "Basic YWRtaW46d2Fnbw=="
+          },
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Filesystem Information", "Available File Systems"]
+        },
+        "issue": "WAGO Ethernet Web-Based Management Default Password - admin:wago"
+      },
+      "WAGO Ethernet Web-Based Management - 2": {
+        "tag": "WAGO",
+        "payload": {
+          "paths": ["/wbm/login.php"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "{\"username\":\"admin\",\"password\":\"wago\"}",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["\"isDefaultPW\":\"1\"", "\"status\":0"]
+        },
+        "issue": "WAGO Ethernet Web-Based Management Default Password - admin:wago"
+      },
+      "NETSurveillance Web": {
+        "tag": "NETSurveillance",
+        "payload": {
+          "paths": ["/Login.htm"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "command=login&username=admin&password=",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["g_SoftWareVersion", "playView"]
+        },
+        "issue": "NETSurveillance Web Default Password - admin:blank"
+      },
+      "Fibaro Home Center": {
+        "tag": "Fibaro",
+        "payload": {
+          "paths": ["/api/loginStatus?action=login"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close",
+            "Authorization": "Basic YWRtaW46YWRtaW4=="
+          },
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["status", "username", "type"]
+        },
+        "issue": "Fibaro Home Center Default Password - admin:admin"
+      },
+      "MobinNet Router": {
+        "tag": "MobinNet",
+        "payload": {
+          "paths": ["/cgi-bin/login.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "Command=Submit&expires=Mon%2C+04+Mar+2024+11%3A35%3A34+GMT&browserTime=030317052024&currentTime=1709465734&user=admin&password=admin",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["initialize", "getCommonJScript", "getCookie"]
+        },
+        "issue": "MobinNet Router Default Password - admin:admin"
+      },
+      "D-Link Router": {
+        "tag": "D-Link",
+        "payload": {
+          "paths": ["session.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close",
+            "Cookie": "uid=R9XtxJ9Z2l"
+          },
+        "body": "REPORT_METHOD=xml&ACTION=login_digest&USER=Admin&PASSWD=d41d8cd98f00b204e9800998ecf8427e&CAPTCHA=",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["SUCCESS"]
+        },
+        "issue": "D-Link Router Default Password - admin:blank"
+      },
+      "Comcast Xfinity Gateway": {
+        "tag": "Xfinity",
+        "payload": {
+          "paths": ["check.php"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "username=admin&password=password",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "headers": {
+              "Set-Cookie": "PHPSESSID="
+          }
+        },
+        "issue": "Comcast Xfinity Gateway Default Password - admin:password"
+      },
+      "Walchem Watertreatment System 1": {
+        "tag": "Walchem",
+        "payload": {
+          "paths": ["1001.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "username=********&enusername=3d38313532&password=********&enpassword=69696969&Login=Log+In",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Home", "Controller<span"]
+        },
+        "issue": "Walchem Watertreatment System Default Password - admin:5555"
+      },
+      "Walchem Watertreatment System 2": {
+        "tag": "Walchem",
+        "payload": {
+          "paths": ["1001.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "username=********&enusername=292f392e&password=********&enpassword=6d6d6d6d&Login=Log+In",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Home", "Controller<span"]
+        },
+        "issue": "Walchem Watertreatment System Default Password - user:1111"
+      },
+      "Walchem Watertreatment System 3": {
+        "tag": "Walchem",
+        "payload": {
+          "paths": ["1001.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "username=********&enusername=3d38313532&password=********&enpassword=070ba287b2ebc7e368e91d65a827fe937ddf4c35f6be82e2bb78cac762b3fde0&Login=Log+In",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Home", "Controller"]
+        },
+        "issue": "Walchem Watertreatment System Default Password - admin:5555"
+      },
+      "Walchem Watertreatment System 4": {
+        "tag": "Walchem",
+        "payload": {
+          "paths": ["1001.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close"
+          },
+        "body": "username=********&enusername=292f392e&password=********&enpassword=3d0178c56ddd5f222bcd1e1e4d0a03b66a3ee3de795e2272ee66be337f3c014f&Login=Log+In",        
+        "method": "POST"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "",
+            "strings": ["Home", "Controller"]
+        },
+        "issue": "Walchem Watertreatment System Default Password - user:1111"
+      },
+      "Netwave IP Camera": {
+        "tag": "Netwave",
+        "payload": {
+          "paths": ["check_user.cgi"],
+          "headers": {
+            "Content-Length": "11",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "Connection": "close",
+            "Authorization": "Basic YWRtaW46"
+          },
+        "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "strings": ["admin", "user", "pwd"]
+        },
+        "issue": "Netwave IP Camera Default Password - admin:blank"
+      }
+    },
+    "DUMMY": {
+        "payload": {
+          "paths": ["/userRpm/LoginRpm.htm?Save=Save"],
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Cookie": "Authorization=Basic%20YWRtaW46MjEyMzJmMjk3YTU3YTVhNzQzODk0YTBlNGE4MDFmYzM%3D"        
+          },
+          "body": "test",
+          "method": "GET"
+        },
+        "matchers": {
+            "response_code": 200,
+            "responsePath": "/userRpm/Index.htm",
+            "strings": ["\/userRpm\/Index.htm"],
+            "headers": {
+                "Server": "Router Webserver",
+                "WWW-Authenticate": "Basic realm=\"TP-Link"
+            }
+        },
+        "issue": "TP-Link Router Default Password - admin:admin"
+    }
+}
+  

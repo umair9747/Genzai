@@ -1,0 +1,233 @@
+{
+    "entries": {
+      "Tenda Wireless Router": {
+        "matchers": {
+          "strings": [".\/css\/reasyui.css"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "Tenda"
+      },
+      "TP-Link Wireless Router": {
+        "matchers": {
+          "headers": {
+            "Server": "Router Webserver",
+            "Www-Authenticate": "Basic realm=\"TP-Link"
+          },
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "TP-Link"
+      },
+      "Edimax Wireless Router": {
+        "matchers": {
+          "headers": {
+            "Www-Authenticate": "Basic realm=\"Default Name:admin Password:1234\""
+          },
+          "strings": [],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "Edimax"
+      },
+      "IP Camera": {
+        "matchers": {
+          "headers": {
+            "Cache-Control": "no-cache,no-store",
+            "Www-Authenticate": "Basic realm=\"index.html\""
+          },
+          "strings": ["Error: username or password error,please input again."],
+          "response_code": 401,
+          "condition": "AND"
+        },
+        "category": "Camera",
+        "tag": "IPCamera"
+      },
+      "Asus Wireless Router RT-N12E": {
+        "matchers": {
+          "headers": {
+            "Www-Authenticate": "Basic realm=\"RT-N12E\""
+          },
+          "strings": ["Authorization required."],
+          "response_code": 401,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "Asus"
+      },
+      "Omron NS web interface": {
+        "matchers": {
+          "headers": {
+            "Server": "NS Web Interface Version",
+            "Www-Authenticate": "Basic Realm=\"NS Web Interface\""
+          },
+          "strings": ["401 Authorization Required"],
+          "response_code": 401,
+          "condition": "AND"
+        },
+        "category": "HMI",
+        "tag": "Omron"
+      },
+      "ANEL-Elektronik NET-PwrCtrl": {
+        "matchers": {
+          "headers": {
+            "Www-Authenticate": "Basic realm=\"NET-PwrCtrl\""
+          },
+          "strings": ["401 Unauthorized: Password required"],
+          "response_code": 401,
+          "condition": "AND"
+        },
+        "category": "Smart Power Control",
+        "tag": "ANEL-Elektronik"
+      },
+      "Comelit Multi-apartment Gateway": {
+        "matchers": {
+          "strings": ["- Index</title>", "comelit-logo.png", "by Comelit S.p.A. All rights reserved"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Building Access Control System",
+        "tag": "Comelit"
+      },
+      "Heatmiser Wifi Thermostat": {
+        "matchers": {
+          "strings": ["<title>Heatmiser Wifi Thermostat</title>", "Username", "Password"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Climate Control",
+        "tag": "Heatmiser"
+      },
+      "WAGO Ethernet Web-Based Management - 1": {
+        "matchers": {
+          "strings": ["<title> WAGO Ethernet Web-Based Management </title>", "cplcfg/upperframe.htm", "cplcfg/menuframe.ssi"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Industrial Automation",
+        "tag": "WAGO"
+      },
+      "WAGO Ethernet Web-Based Management - 2": {
+        "matchers": {
+          "strings": ["<title>WAGO Ethernet Web-based Management</title>", "<h1>Web-based Management</h1>", "Hansastr. 27"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Industrial Automation",
+        "tag": "WAGO"
+      },
+      "NETSurveillance Web": {
+        "matchers": {
+          "strings": ["var gHashCookie", "GetDeviceState"],
+          "response_code": 200,
+          "headers": {
+            "Server": "uc-httpd"
+          },
+          "condition": "AND"
+        },
+        "category": "Video Surveillance and Security",
+        "tag": "NETSurveillance"
+      },
+      "Fibaro Home Center": {
+        "matchers": {
+          "strings": ["/fibaro/js/config.js", "fibaro", "Home Center"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Home Automation",
+        "tag": "Fibaro"
+      },
+      "MobinNet Router": {
+        "matchers": {
+          "strings": ["mobinnet", "password"],
+          "response_code": 200,
+          "headers": {
+            "Server": "lighttpd"
+          },
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "MobinNet"
+      },
+      "D-Link Router": {
+        "matchers": {
+          "strings": ["<title>D-LINK SYSTEMS, INC. |", "xml.js"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "D-Link"
+      },
+      "Comcast Xfinity Gateway": {
+        "matchers": {
+          "strings": ["<title>Xfinity</title>", "Login", "Gateway"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "Xfinity"
+      }, 
+      "Walchem Watertreatment System": {
+        "matchers": {
+          "headers": {
+            "Server": "Acadia Server"
+          },
+          "strings": ["Log In</title>", "Controller Log In"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Water Treatment System",
+        "tag": "Walchem"
+      }, 
+      "Linksys Wireless Router": {
+        "matchers": {
+          "headers": {
+            "WWW-Authenticate": "Basic realm=\"Linksys"
+          },
+          "response_code": 401,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "Linksys"
+      },
+      "ContaCam Video Surveillance": {
+        "matchers": {
+          "headers": {
+            "X-Powered-By": "PHP"
+          },
+          "strings": ["<title>ContaCam</title>"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Camera",
+        "tag": "ContaCam"
+      },
+      "Netwave IP Camera": {
+        "matchers": {
+          "headers": {
+            "Server": "Netwave IP Camera"
+          },
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Camera",
+        "tag": "Netwave"
+      },
+      "D-Link NAS Device": {
+        "matchers": {
+          "headers": {
+            "P3P": "CP"
+          },
+          "strings": ["Please Select Your Account", "logo.png"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "NAS",
+        "tag": "D-Link"
+      }                             
+    }
+  }
+  

