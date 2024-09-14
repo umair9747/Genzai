@@ -4,43 +4,23 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+
 	"github.com/rumble773/Genzai-UI/internal/models"
 )
 
-// Issue represents an individual issue within the Results structure
-type Issue struct {
-	IssueTitle        string `json:"IssueTitle"`
-	URL               string `json:"URL"`
-	AdditionalContext string `json:"AdditionalContext"`
-}
+var genzaiOutput models.Response
 
-type genzaiResult struct {
-	Target        string  `json:"target"`
-	IoTidentified string  `json:"iot_identified"`
-	Category      string  `json:"category"`
-	Issues        []Issue `json:"issues,omitempty"`
-	Error         string  `json:"error,omitempty"`
-}
-
-// Response represents the overall structure of the JSON
-type Response struct {
-	Results []genzaiResult `json:"Results"`
-	Targets []string       `json:"Targets"`
-}
-
-var genzaiOutput Response
-
-func generateOutput() {
+func GenerateOutput() {
 	genzaiJson, err := json.MarshalIndent(genzaiOutput, "", "    ")
 	if err != nil {
 		log.Println(genzaiOutput)
 		log.Println(err)
 	} else {
-		if saveOutput == "" {
+		if SaveOutput == "" {
 			fmt.Println("")
 			log.Println("No file name detected to log the output. Skipping to printing it!")
 		} else {
-			logData(string(genzaiJson), saveOutput)
+			LogData(string(genzaiJson), SaveOutput)
 		}
 		fmt.Println("\n ")
 		fmt.Println(string(genzaiJson))

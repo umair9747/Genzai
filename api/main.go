@@ -15,9 +15,9 @@ import (
 	"github.com/gorilla/mux"
 	
 	"github.com/rumble773/Genzai-UI/internal/detection"
-    "github.com/rumble773/Genzai-UI/internal/models"
-    "github.com/rumble773/Genzai-UI/internal/scan"
-    "github.com/rumble773/Genzai-UI/internal/utils"
+	"github.com/rumble773/Genzai-UI/internal/models"
+	"github.com/rumble773/Genzai-UI/internal/scan"
+	"github.com/rumble773/Genzai-UI/internal/utils"
 )
 
 var (
@@ -26,21 +26,8 @@ var (
 	verbose    bool
 )
 
-type ScanRequest struct {
-	Targets []string `json:"targets"`
-}
-
-type ScanResponse struct {
-	Results      []genzaiResult `json:"results"`
-	Targets      []string       `json:"targets"`
-	TotalScanned int            `json:"total_scanned"`
-	TimeElapsed  string         `json:"time_elapsed"`
-	Errors       []string       `json:"errors,omitempty"`
-}
-
-
 func main() {
-	flag.StringVar(&saveOutput, "save", "", "Save the output in a file. [Default filename is output.json]")
+	flag.StringVar(&utils.SaveOutput, "save", "", "Save the output in a file. [Default filename is output.json]")
 	flag.IntVar(&numWorkers, "workers", 10, "Number of concurrent workers")
 	flag.DurationVar(&timeout, "timeout", 30*time.Second, "Timeout for each scan")
 	flag.BoolVar(&verbose, "verbose", false, "Enable verbose logging")
@@ -50,7 +37,7 @@ func main() {
 	r.HandleFunc("/scan", handleScan).Methods("POST")
 	r.HandleFunc("/health", handleHealth).Methods("GET")
 
-	printBanner()
+	utils.PrintBanner()
 	log.Println("Starting Genzai API server on :8080")
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
@@ -63,7 +50,7 @@ func handleHealth(w http.ResponseWriter, r *http.Request) {
 func handleScan(w http.ResponseWriter, r *http.Request) {
 	start := time.Now()
 
-	var scanReq ScanRequest
+	var scanReq models.ScanRequest
 	if err := json.NewDecoder(r.Body).Decode(&scanReq); err != nil {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
@@ -84,22 +71,21 @@ func handleScan(w http.ResponseWriter, r *http.Request) {
 
 	log.Println("Genzai is starting...")
 	log.Println("Loading Genzai Signatures DB...")
-	loadDB()
+	genzaiDB := utils.LoadDB()
 	log.Println("Loading Vendor Passwords DB...")
-	loadVendorDB()
+	vendorDB := utils.LoadVendorDB()
 	log.Println("Loading Vendor Vulnerabilities DB...")
-	loadVendorVulnsDB()
+	vendorVulnsDB := utils.LoadVendorVulnsDB()
 
-	results, errors := scanTargets(expandedTargets)
+	results, errors := scanTargets(expandedTargets, genzaiDB, vendorDB, vendorVulnsDB)
 
-	scanResponse := ScanResponse{
+	scanResponse := models.ScanResponse{
 		Results:      results,
 		Targets:      scanReq.Targets,
 		TotalScanned: len(expandedTargets),
 		TimeElapsed:  time.Since(start).String(),
 		Errors:       errors,
 	}
-
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(scanResponse)
@@ -132,10 +118,10 @@ func inc(ip net.IP) {
 	}
 }
 
-func scanTargets(targets []string) ([]genzaiResult, []string) {
-	results := make([]genzaiResult, 0, len(targets))
+func scanTargets(targets []string, genzaiDB models.GenzaiDB, vendorDB models.VendorDB, vendorVulnsDB models.VendorVulnsDB) ([]models.GenzaiResult, []string) {
+	results := make([]models.GenzaiResult, 0, len(targets))
 	errors := make([]string, 0)
-	resultChan := make(chan genzaiResult, len(targets))
+	resultChan := make(chan models.GenzaiResult, len(targets))
 	errorChan := make(chan string, len(targets))
 	var wg sync.WaitGroup
 
@@ -148,7 +134,7 @@ func scanTargets(targets []string) ([]genzaiResult, []string) {
 			defer wg.Done()
 			defer func() { <-semaphore }()
 
-			result, err := scanTarget(target)
+			result, err := scanTarget(target, genzaiDB, vendorDB, vendorVulnsDB)
 			if err != nil {
 				errorChan <- fmt.Sprintf("Error scanning %s: %v", target, err)
 			} else {
@@ -174,23 +160,30 @@ func scanTargets(targets []string) ([]genzaiResult, []string) {
 	return results, errors
 }
 
-func scanTarget(target string) (genzaiResult, error) {
+func scanTarget(target string, genzaiDB models.GenzaiDB, vendorDB models.VendorDB, vendorVulnsDB models.VendorVulnsDB) (models.GenzaiResult, error) {
 	logVerbose("Starting the scan for original target: %s", target)
 	
 	formattedTarget, err := ensureURLFormat(target)
 	if err != nil {
-		return genzaiResult{}, fmt.Errorf("invalid target URL: %v", err)
+		return models.GenzaiResult{}, fmt.Errorf("invalid target URL: %v", err)
 	}
 	
 	logVerbose("Scanning formatted target: %s", formattedTarget)
 	
-	product, category, tag := targetDetection(formattedTarget)
+	product, category, tag := detection.TargetDetection(formattedTarget, genzaiDB)
 	if product == "" {
 		logVerbose("No product identified for target: %s", formattedTarget)
-		return genzaiResult{Target: formattedTarget, Error: "No product identified"}, nil
+		return models.GenzaiResult{
+			Target: formattedTarget,
+			Issues: []models.Issue{{
+				IssueTitle: "No product identified",
+				URL:        formattedTarget,
+				AdditionalContext: "The target could not be identified as any known IoT product.",
+			}},
+		}, nil
 	}
 
-	result := genzaiResult{
+	result := models.GenzaiResult{
 		Target:        formattedTarget,
 		IoTidentified: product,
 		Category:      category,
@@ -198,13 +191,13 @@ func scanTarget(target string) (genzaiResult, error) {
 
 	logVerbose("IoT Dashboard Discovered: %s", product)
 	logVerbose("Trying for default vendor-specific [%s] passwords...", product)
-	passIssue := vendorpassScan(formattedTarget, product, tag)
+	passIssue := scan.VendorpassScan(formattedTarget, product, tag, vendorDB)
 	if passIssue.IssueTitle != "" {
 		result.Issues = append(result.Issues, passIssue)
 	}
 
 	logVerbose("Scanning for any known vulnerabilities from the DB related to %s", product)
-	vulnIssues := vendorvulnScan(formattedTarget, product, tag)
+	vulnIssues := scan.VendorvulnScan(formattedTarget, product, tag, vendorVulnsDB)
 	result.Issues = append(result.Issues, vulnIssues...)
 
 	return result, nil
@@ -236,7 +229,6 @@ func ensureURLFormat(target string) (string, error) {
 
 	return u.String(), nil
 }
-
 
 func logVerbose(format string, v ...interface{}) {
 	if verbose {

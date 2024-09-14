@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rumble773/Genzai-UI/internal/utils"
+	"github.com/rumble773/Genzai-UI/internal/models"
 )
 
-func targetDetection(target string) (string, string, string) {
+func TargetDetection(target string, genzaiDB models.GenzaiDB) (string, string, string) {
 	resp, err := makeGetRequest(target)
 	if err != nil {
 		fmt.Println("Error making GET request:", err)
@@ -82,7 +82,7 @@ func makeGetRequest(url string) (*http.Response, error) {
 	return resp, nil
 }
 
-func andConditionMatcher(entry Entry, resp *http.Response, respBody []byte) bool {
+func andConditionMatcher(entry models.Entry, resp *http.Response, respBody []byte) bool {
 	var isMatched bool
 	var headersMatched bool
 	var stringsMatched bool
