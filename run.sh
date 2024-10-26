@@ -14,17 +14,15 @@ trap cleanup SIGINT
 # Function to start the Go API
 start_go_api() {
     echo "Building and starting Go API..."
-    cd Genzai-Tool || exit
     go build
     ./genzai -api &
     GO_PID=$!
-    cd ..
 }
 
 # Function to start the Streamlit UI
 start_streamlit_ui() {
     echo "Starting Streamlit UI..."
-    python3 -m streamlit run Genzai-UI/ui-main.py &
+    python3 -m streamlit run ./Genzai-UI/ui-main.py &
     STREAMLIT_PID=$!
 }
 
@@ -36,7 +34,6 @@ if [[ "$1" == "-api" && "$2" == "-ui" ]]; then
     wait $GO_PID $STREAMLIT_PID
 elif [[ "$1" =~ ^http:// ]]; then
     echo "Running ./genzai on target $1..."
-    cd Genzai-Tool || exit
     ./genzai "$1"
 else
     echo "Usage:"
