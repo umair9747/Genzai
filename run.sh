@@ -24,7 +24,7 @@ start_go_api() {
 # Function to start the Streamlit UI
 start_streamlit_ui() {
     echo "Starting Streamlit UI..."
-    python3 -m streamlit run ui-main.py &
+    python3 -m streamlit run Genzai-UI/ui-main.py &
     STREAMLIT_PID=$!
 }
 
