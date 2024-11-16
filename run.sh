@@ -26,21 +26,10 @@ start_streamlit_ui() {
     STREAMLIT_PID=$!
 }
 
-# Parse command-line arguments
-if [[ "$1" == "-api" && "$2" == "-ui" ]]; then
-    start_go_api
-    sleep 2
-    start_streamlit_ui
-    wait $GO_PID $STREAMLIT_PID
-elif [[ "$1" =~ ^http:// ]]; then
-    echo "Running ./genzai on target $1..."
-    ./genzai "$1"
-else
-    echo "Usage:"
-    echo "./run.sh -api -ui         # Start API and UI"
-    echo "./run.sh http://ip:port   # Run on target without UI"
-    exit 1
-fi
+start_go_api
+sleep 2
+start_streamlit_ui
+wait $GO_PID $STREAMLIT_PID
 
 # Cleanup in case processes exit naturally
 cleanup
