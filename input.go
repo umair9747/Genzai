@@ -8,14 +8,25 @@ import (
 	"strings"
 )
 
+var apiMode bool // New global flag for API mode
+
 func takeInput() {
+	// Define new `--api` flag
+	flag.BoolVar(&apiMode, "api", false, "Run the tool in API mode")
 	flag.StringVar(&saveOutput, "save", "", "Save the output in a file. [Default filename is output.json]")
 	flag.Parse()
 	args = flag.Args()
+
+	if apiMode {
+		startAPIServer() // Start the API server if `--api` is passed
+		return
+	}
+
 	if len(args) < 1 {
-		fmt.Println("No arguments provied! [Exiting...]")
+		fmt.Println("No arguments provided! [Exiting...]")
 		os.Exit(0)
 	} else {
+		// Existing input handling logic
 		for i := 0; i < len(args); i++ {
 			arg := args[i]
 			if arg == "save" || arg == "-save" || arg == "--save" {

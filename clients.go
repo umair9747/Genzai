@@ -11,7 +11,7 @@ import (
 func makeHTTPRequest(url string, headers map[string]string, body string, method string) (*http.Response, error) {
 	client := http.Client{
 		Timeout: 60 * time.Second,
-		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+		CheckRedirect: func(_ *http.Request, via []*http.Request) error {
 			// Allow up to 10 redirects
 			if len(via) >= 10 {
 				return fmt.Errorf("too many redirects")

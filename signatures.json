@@ -227,7 +227,19 @@
         },
         "category": "NAS",
         "tag": "D-Link"
-      }                             
+      },
+      "Megapixel IP Camera": {
+        "matchers": {
+          "headers": {
+            "Server": "Cam-Webs"
+          },
+          "strings": ["IPC_PlayerAX"],
+          "response_code": 302,
+          "condition": "OR"
+        },
+        "category": "Camera",
+        "tag": "Megapixel-Cam"
+      }                                     
     }
   }
   

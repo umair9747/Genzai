@@ -487,7 +487,34 @@
             "strings": ["admin", "user", "pwd"]
         },
         "issue": "Netwave IP Camera Default Password - admin:blank"
-      }
+    },
+    "Megapixel IP Camera": {
+      "tag": "Megapixel-Cam",
+      "payload": {
+        "paths": ["cgi/GetCameraTime"],
+        "headers": {
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0",
+        "Accept": "text/plain, */*; q=0.01",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate",
+        "X-Requested-With": "XMLHttpRequest",
+        "DNT": "1",
+        "Sec-GPC": "1",
+        "Authorization": "Basic YWRtaW46YWRtaW4=",
+        "Connection": "keep-alive",
+        "Referer": "http://115.78.166.112:8181/browse/video/videoset.asp?_=1729954674887",
+        "Cookie": "dev=164; BSDdev=1; ICEtype=0; SU=admin; jsLivePresetNo=0; jsLiveAutopanNo=0; jslivePatternNum=0; jsliveTourNum=0; playMode=NaN; jsPresetNum=0; player=hkvisionMax"
+            },
+      "method": "GET"
+      },
+      "matchers": {
+          "response_code": 200,   
+          "headers": {
+                "Content-Type": "text/html"
+            }   
+        },
+      "issue": "Megapixel IP Camera Default Password - admin:admin"
+    }
     },
     "DUMMY": {
         "payload": {
