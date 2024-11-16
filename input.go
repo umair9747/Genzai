@@ -9,6 +9,7 @@ import (
 	"os/exec"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -111,13 +112,38 @@ func runReconMode() {
 
 func scanLocalNetwork(subnet string) []string {
 	var activeHosts []string
+	var mu sync.Mutex // To synchronize access to activeHosts
+	concurrency := 20 // Adjust this number based on system capabilities
+	sem := make(chan struct{}, concurrency)
+	results := make(chan string, 254)
+
 	for i := 1; i <= 254; i++ {
 		ip := fmt.Sprintf("%s%d", subnet, i)
-		if pingHost(ip) {
-			log.Printf("Active host found: %s\n", ip)
-			activeHosts = append(activeHosts, ip)
-		}
+		sem <- struct{}{} // Acquire a slot in the semaphore
+		go func(ip string) {
+			defer func() { <-sem }() // Release the slot in the semaphore
+			if pingHost(ip) {
+				log.Printf("Active host found: %s\n", ip)
+				results <- ip
+			}
+		}(ip)
 	}
+
+	// Close results channel when all goroutines are done
+	go func() {
+		for i := 0; i < cap(sem); i++ {
+			sem <- struct{}{}
+		}
+		close(results)
+	}()
+
+	// Collect results from the channel
+	for ip := range results {
+		mu.Lock()
+		activeHosts = append(activeHosts, ip)
+		mu.Unlock()
+	}
+
 	return activeHosts
 }
 
