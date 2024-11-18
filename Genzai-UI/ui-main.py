@@ -185,8 +185,8 @@ targets_input = st.text_area(
     label_visibility="collapsed"
 )
 
-with st.expander("Genzai, upload input file and change API endpoint:"):
-    st.markdown(f'<p style="color: {THEME["text"]};">Or upload a text file:</p>', unsafe_allow_html=True)
+with st.expander("Genzai, upload input file or change API endpoint:"):
+    st.markdown(f'<p style="color: {THEME["text"]};">Upload a text file:</p>', unsafe_allow_html=True)
     uploaded_file = st.file_uploader("Choose a text file", type=['txt'], label_visibility="collapsed")
     if uploaded_file is not None:
         targets_input = uploaded_file.getvalue().decode("utf-8")
