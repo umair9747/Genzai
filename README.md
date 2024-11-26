@@ -61,7 +61,7 @@ Want to supercharge your existing pipeline or application with Genzai? The all-n
 Let’s face it—CLI is functional, but not always fun. That’s why we’ve introduced a sleek, web-based GUI mode! It’s intuitive, engaging, and designed to take your productivity to the next level. Say goodbye to monotony and hello to efficiency. [<a href="./docs/v2.md#guimode">Learn more</a>]  
 
 <h4>🌐 Recon Mode: Explore at Warp Speed</h4>
-Curious to see if IoT devices are lurking in a subnet? Or perhaps you need to probe a private network for vulnerabilities? Recon mode has your back, offering lightning-fast scanning to uncover hidden gems (or threats). [<a href="">Learn more</a>]
+Curious to see if IoT devices are lurking in a subnet? Or perhaps you need to probe a private network for vulnerabilities? Recon mode has your back, offering lightning-fast scanning to uncover hidden gems (or threats). [<a href="./docs/v2.md#reconmode">Learn more</a>]
 </div>
 
 </div>
