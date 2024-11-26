@@ -4,7 +4,7 @@
 <a href="#description">Description</a> • <a href="#features">Features</a> • <a href="./docs/documentation.md#setupnusage">Setup & Usage</a> • <a href="#acknowledgements">Acknowledgements</a> • <a href="#contact">Contact Me</a><br>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-1.0-green">
+  <img src="https://img.shields.io/badge/Version-2.0-green">
   <img src="https://img.shields.io/badge/Black%20Hat%20Arsenal-%20Asia%202024-blue">
   <img src="https://img.shields.io/badge/GISEC Armory-%20Dubai%202024-blue">
   <a href="https://www.buymeacoffee.com/umair9747" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 21px !important;width: 94px !important;" ></a>
@@ -50,13 +50,29 @@ Based on the IoT product identified and the presence of a relevant template in <
 Also based on the IoT product identified and with the presence of a relevant template in <a href="./vendor-vulns.json">Vendor Vulns DB</a>, Genzai will check for any potential vulnerabilities across the target. While some of the templates actively flag issues based on an exposed endpoint or file, others may flag based on a vulnerable version.
 </div>
 
+<div id="v2">
+<h2>v2 is here! 🚀</h2>
+In this November 2024 update prior to <a href="https://blackhatmea.com/agenda-2024">Black Hat MEA</a>, we are glad to announce the v2 update for Black Hat MEA with some really exciting new features!
+
+<h4>📡 API Mode: Integrate Seamlessly</h4>
+Want to supercharge your existing pipeline or application with Genzai? The all-new API mode allows you to deploy an API server effortlessly and perform scans with ease. No fuss, just results. [<a href="./docs/v2.md#apimode">Learn more</a>]  
+
+<h4>🖥️ GUI Mode: Simplicity Meets Power</h4>
+Let’s face it—CLI is functional, but not always fun. That’s why we’ve introduced a sleek, web-based GUI mode! It’s intuitive, engaging, and designed to take your productivity to the next level. Say goodbye to monotony and hello to efficiency. [<a href="./docs/v2.md#guimode">Learn more</a>]  
+
+<h4>🌐 Recon Mode: Explore at Warp Speed</h4>
+Curious to see if IoT devices are lurking in a subnet? Or perhaps you need to probe a private network for vulnerabilities? Recon mode has your back, offering lightning-fast scanning to uncover hidden gems (or threats). [<a href="">Learn more</a>]
+</div>
+
+</div>
+
 <div id="acknowledgements">
 <h2> Acknowledgements </h2>
 Genzai has been or will be noticed at,
 <ul type="disc">
 <li><a href="https://www.blackhat.com/asia-24/arsenal/schedule/index.html#genzai---the-iot-security-toolkit-37373">Black Hat Asia 2024 [Arsenal]</a></li>
 <li><a href="https://www.gisec.ae/gisec-armory">GISEC Armory Edition 1 Dubai 2024</a></li>
-
+<li><a href="https://blackhatmea.com/agenda-2024">Black Hat MEA 2024 [Arsenal]</a></li>
 </ul>
 </div>
 
