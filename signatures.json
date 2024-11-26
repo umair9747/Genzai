@@ -239,7 +239,15 @@
         },
         "category": "Camera",
         "tag": "Megapixel-Cam"
+      },
+      "Tenda WiFi Router": {
+        "matchers": {
+          "strings": ["css\/reasy-ui.css"],
+          "response_code": 200,
+          "condition": "AND"
+        },
+        "category": "Router",
+        "tag": "Tenda"
       }                                     
     }
   }
-  
