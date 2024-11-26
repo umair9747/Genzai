@@ -191,7 +191,7 @@ with st.expander("Genzai, upload input file or change API endpoint:"):
     if uploaded_file is not None:
         targets_input = uploaded_file.getvalue().decode("utf-8")
 
-    api_endpoint = st.text_input("API Endpoint", value="http://0.0.0.0:8080/scan")
+    api_endpoint = st.text_input("API Endpoint", value="http://0.0.0.0:8585/scan")
 
 if st.button("Start Scan 🚀"):
     if targets_input:
