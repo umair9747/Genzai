@@ -8,8 +8,8 @@ import (
 
 func startAPIServer() {
 	http.HandleFunc("/scan", apiHandler) // Handle POST requests at `/scan` endpoint
-	log.Println("Starting API server on :8080...")
-	log.Fatal(http.ListenAndServe(":8080", nil)) // Start server on port 8080
+	log.Println("Starting API server on :8585...")
+	log.Fatal(http.ListenAndServe(":8585", nil)) // Start server on port 8585
 }
 
 type ScanRequest struct {
