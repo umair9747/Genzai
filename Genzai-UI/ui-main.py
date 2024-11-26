@@ -258,7 +258,8 @@ if st.session_state.scan_results:
         """, unsafe_allow_html=True)
     
     with col3:
-        total_issues = sum(len(result["Issues"]) for result in results["Results"])
+        # Calculate total issues
+        total_issues = sum(len(result["Issues"]) if result.get("Issues") else 0 for result in results["Results"])
         st.markdown(f"""
         <div class="metric-card">
             <div class="metric-label">Issues Found</div>
@@ -267,7 +268,7 @@ if st.session_state.scan_results:
         """, unsafe_allow_html=True)
     
     with col4:
-        unique_categories = len(set(result["category"] for result in results["Results"]))
+        unique_categories = len(set(result.get("category", "Unknown") for result in results["Results"]))
         st.markdown(f"""
         <div class="metric-card">
             <div class="metric-label">Device Categories</div>
@@ -350,14 +351,15 @@ if st.session_state.scan_results:
         # Create CSV export
         csv_data = []
         for result in results["Results"]:
-            for issue in result["Issues"]:
-                csv_data.append({
-                    "Target": result["Target"],
-                    "Device": result["IoTidentified"],
-                    "Category": result["category"],
-                    "Issue": issue["IssueTitle"],
-                    "URL": issue["URL"]
-                })
+            if result["Issues"]:
+                for issue in result["Issues"]:
+                    csv_data.append({
+                        "Target": result["Target"],
+                        "Device": result["IoTidentified"],
+                        "Category": result["category"],
+                        "Issue": issue["IssueTitle"],
+                        "URL": issue["URL"]
+                    })
         
         csv_df = pd.DataFrame(csv_data)
         st.download_button(
